@@ -15,6 +15,7 @@ public class BrowserClass {
 			driver = new EdgeDriver();
 		}
 		driver.manage().window().maximize();
+		driver.manage().window().minimize();
 		return driver;
 	}
 }
