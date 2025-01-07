@@ -1,0 +1,61 @@
+# Compiled class files
+*.class
+
+# Log files
+*.log
+
+# Maven build directory
+/target/
+
+# IntelliJ IDEA project files
+/.idea/
+/*.iml
+
+# Eclipse project files
+.project
+.classpath
+.settings/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Test reports
+/test-output/
+/test-results/
+/surefire-reports/
+/cucumber-reports/
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+
+# Environment files
+.env
+
+# Node.js dependencies (if applicable)
+node_modules/
+
+# JetBrains IDE configuration
+*.ipr
+*.iws
+.idea/
+
+# Java cache files
+*.jar
+*.war
+*.ear
+*.zip
+
+# Logs and temp files
+logs/
+*.log
+hs_err_pid*
+
+# Specific Cucumber-generated artifacts
+.cucumber/
+*.json
+*.html
+*.xml
+rerun.txt
