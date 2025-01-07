@@ -1,0 +1,1 @@
+Feature: Projects page of Scriptureforge application
