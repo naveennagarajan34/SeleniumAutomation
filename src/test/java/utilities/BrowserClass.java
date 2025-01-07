@@ -14,7 +14,6 @@ public class BrowserClass {
 			System.setProperty("webdriver.edge.driver", "src/test/Resources/drivers/msedgedriver.exe");
 			driver = new EdgeDriver();
 		}
-		
 		driver.manage().window().maximize();
 		return driver;
 	}
