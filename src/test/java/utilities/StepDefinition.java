@@ -51,7 +51,11 @@ public class StepDefinition {
 
 	@AfterAll
 	public static void cleanUp() {
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
-		driver.close();
+		try {
+			Thread.sleep(Duration.ofSeconds(20));
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+//		driver.close();
 	}
 }
