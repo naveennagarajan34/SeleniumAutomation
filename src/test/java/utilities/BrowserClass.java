@@ -7,14 +7,14 @@ import org.openqa.selenium.edge.EdgeDriver;
 public class BrowserClass {
 
 	public WebDriver openBrowser(WebDriver driver, String browser) {
+		String driverPath = "src/test/Resources/drivers";
 		if (browser.equalsIgnoreCase("chrome")) {
-			System.setProperty("webdriver.chrome.driver", "src/test/Resources/drivers/chromedriver.exe");
+			System.setProperty("webdriver.chrome.driver", driverPath + "/chromedriver.exe");
 			driver = new ChromeDriver();
 		} else if (browser.equalsIgnoreCase("edge")) {
-			System.setProperty("webdriver.edge.driver", "src/test/Resources/drivers/msedgedriver.exe");
+			System.setProperty("webdriver.edge.driver", driverPath + "/msedgedriver.exe");
 			driver = new EdgeDriver();
 		}
-		driver.manage().window().maximize();
 		driver.manage().window().minimize();
 		return driver;
 	}
