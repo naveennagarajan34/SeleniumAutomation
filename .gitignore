@@ -6,6 +6,7 @@
 
 # Properties file
 *.properties
+configuration.properties
 
 # Maven build directory
 /target/
