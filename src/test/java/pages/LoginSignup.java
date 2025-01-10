@@ -1,7 +1,6 @@
 package pages;
 
 import java.time.Duration;
-import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -31,7 +30,7 @@ public class LoginSignup {
 		loginButton.click();
 		return driver;
 	}
-	@SuppressWarnings("deprecation")
+
 	public WebDriver loginWithParatext(String mailId, String password, WebDriver driver) {
 		WebElement ptLoginButton = driver.findElement(By.xpath("//div[contains(text(),'Log in with paratext')]"));
 		ptLoginButton.click();
@@ -46,9 +45,7 @@ public class LoginSignup {
 		
 		WebElement nextButton2 = driver.findElement(By.xpath("//*[@id=\"passwordNext\"]/div/button/span"));
 		nextButton2.click();
-		
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		
+	
 		return driver;
 	}
 }

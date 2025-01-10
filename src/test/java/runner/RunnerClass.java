@@ -4,7 +4,7 @@ import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 
 @CucumberOptions(
-		features = "src/test/resources/features", 		// Path to feature files
+		features = "src/test/resources/features/", 		// Path to feature files
 		glue = "utilities", 											// Package containing step definitions
 		plugin = { 
 					"pretty", 											// Prints detailed logs in the console
