@@ -1,19 +1,12 @@
 Feature: Login functionality for Scriptureforge
 
-  Scenario Outline: Test user login with Mail id and password
-    Given Launch Chrome browser
+  Scenario Outline: User login with valid credentials
+    Given Launch browser
     And Navigate to Scriptureforge
-    When valid "<username>" and "<password>" is entered
+    Then login via "<loginvia>" with "<username>" and "<password>"
 
     Examples: 
-      | username              | password |
-      | shanprabhu7@yahoo.com | Test@123 |
-
-  #Scenario Outline: Test user login with Paratext
-    #Given Launch Chrome browser
-    #And Navigate to Scriptureforge
-    #Then Login with paratext "<username>" and "<password>"
-#
-    #Examples: 
-      #| username                  | password        |
-      #| naveen.n@ecgroup-intl.com | Angrybird@12345 |
+      | username                    | password    | loginvia |
+      | shanprabhu7@yahoo.com       | Test@123    | email    |
+      | naveennagarajan34@yahoo.com | Angrybird@1 | email    |
+      | naveen.n@ecgroup            |             | paratext |

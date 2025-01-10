@@ -6,7 +6,6 @@ import io.cucumber.java.AfterAll;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
 import pages.HeaderClass;
 import pages.LoginSignup;
 
@@ -19,7 +18,7 @@ public class StepDefinition {
 
 	static WebDriver driver;
 
-	@Given("Launch Chrome browser")
+	@Given("Launch browser")
 	public void launch_browser() {
 		browserObject = new BrowserClass();
 		driver = browserObject.openBrowser(driver, readPropObject.getProperty("browser"));
@@ -31,22 +30,32 @@ public class StepDefinition {
 		driver = loginObject.NavigateToLoginSignup(driver);
 	}
 
-	@When("valid {string} and {string} is entered")
-	public void valid_and_is_entered(String userName, String password) throws InterruptedException {
+	@Then("login via {string} with {string} and {string}")
+	public void valid_and_is_entered(String loginVia, String userName, String password) throws InterruptedException {
 		loginObject = new LoginSignup();
-		driver = loginObject.loginWithCredentials(userName, password, driver);
-	}
-
-	@Then("Login with paratext {string} and {string}")
-	public void login_with_paratext_and(String userName, String password) {
-		loginObject = new LoginSignup();
-		driver = loginObject.loginWithParatext(userName, password, driver);
+		if (loginVia.equalsIgnoreCase("email")) {
+			driver = loginObject.loginWithCredentials(userName, password, driver);
+		} else if (loginVia.equalsIgnoreCase("paratext")) {
+			driver = loginObject.loginWithParatext(userName, password, driver);
+		}
 	}
 
 	@Then("click on the sf logo in the header")
 	public void click_on_the_sf_logo_in_the_header() {
 		headerObject = new HeaderClass(driver);
 		driver = headerObject.sfLogo(driver);
+	}
+
+	@And("click on the profile icon in the header")
+	public void click_on_the_profile_icon_in_the_header() {
+		headerObject = new HeaderClass(driver);
+		driver = headerObject.clickProfile(driver);
+	}
+
+	@Then("change the user name to {string}")
+	public void changeTheUsername(String name) {
+		headerObject = new HeaderClass(driver);
+		driver = headerObject.changeName(driver, name);
 	}
 
 	@AfterAll
