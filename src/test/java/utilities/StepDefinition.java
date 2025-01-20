@@ -6,7 +6,9 @@ import io.cucumber.java.AfterAll;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import pages.HeaderClass;
+import pages.HomePage;
 import pages.LoginSignup;
 
 public class StepDefinition {
@@ -14,6 +16,7 @@ public class StepDefinition {
 	BrowserClass browserObject;
 	LoginSignup loginObject;
 	HeaderClass headerObject;
+	HomePage homeObject;
 	ReadProperties readPropObject = new ReadProperties();
 
 	static WebDriver driver;
@@ -26,8 +29,14 @@ public class StepDefinition {
 
 	@And("Navigate to Scriptureforge")
 	public void navigateToScriptureforge() {
+		homeObject = new HomePage(driver);
+		homeObject.navigateToHomePage(driver);
+	}
+	
+	@When("clicking on login button")
+	public void clickOnLoginButton() {
 		loginObject = new LoginSignup();
-		driver = loginObject.NavigateToLoginSignup(driver);
+		driver = loginObject.clickOnLoginButton(driver);
 	}
 
 	@Then("login via {string} with {string} and {string}")
@@ -56,6 +65,18 @@ public class StepDefinition {
 	public void changeTheUsername(String name) {
 		headerObject = new HeaderClass(driver);
 		driver = headerObject.changeName(driver, name);
+	}
+	
+	@Then("Click on the Learn more button")
+	public void clickOnLearnMore() {
+		homeObject = new HomePage(driver);
+		homeObject.clickLearnMore(driver);
+	}
+	
+	@And("verify that the user is redirected to learn more page")
+	public void verifyUserIsRedirectedToLearnMore() {
+		homeObject = new HomePage(driver);
+		homeObject.verifyUserIsOnLearnMorePage(driver);
 	}
 
 	@AfterAll
