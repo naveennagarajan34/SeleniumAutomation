@@ -30,53 +30,59 @@ public class StepDefinition {
 	@And("Navigate to Scriptureforge")
 	public void navigateToScriptureforge() {
 		homeObject = new HomePage(driver);
-		homeObject.navigateToHomePage(driver);
+		homeObject.navigateToHomePage(readPropObject.getProperty("baseURL"));
 	}
 	
 	@When("clicking on login button")
 	public void clickOnLoginButton() {
-		loginObject = new LoginSignup();
-		driver = loginObject.clickOnLoginButton(driver);
+		loginObject = new LoginSignup(driver);
+		driver = loginObject.clickOnLoginButton();
 	}
 
 	@Then("login via {string} with {string} and {string}")
 	public void valid_and_is_entered(String loginVia, String userName, String password) throws InterruptedException {
-		loginObject = new LoginSignup();
+		loginObject = new LoginSignup(driver);
 		if (loginVia.equalsIgnoreCase("email")) {
-			driver = loginObject.loginWithCredentials(userName, password, driver);
+			driver = loginObject.loginWithCredentials(userName, password);
 		} else if (loginVia.equalsIgnoreCase("paratext")) {
-			driver = loginObject.loginWithParatext(userName, password, driver);
+			driver = loginObject.loginWithParatext(userName, password);
 		}
 	}
 
 	@Then("click on the sf logo in the header")
 	public void click_on_the_sf_logo_in_the_header() {
 		headerObject = new HeaderClass(driver);
-		driver = headerObject.sfLogo(driver);
+		driver = headerObject.sfLogo();
 	}
 
 	@And("click on the profile icon in the header")
 	public void click_on_the_profile_icon_in_the_header() {
 		headerObject = new HeaderClass(driver);
-		driver = headerObject.clickProfile(driver);
+		driver = headerObject.clickProfile();
 	}
 
 	@Then("change the user name to {string}")
 	public void changeTheUsername(String name) {
 		headerObject = new HeaderClass(driver);
-		driver = headerObject.changeName(driver, name);
+		driver = headerObject.changeName(name);
+	}
+	
+	@And("verify that the user name is changed to {string}")
+	public void verifyUserNameIsUpdatedToGivenName(String newName) {
+		headerObject = new HeaderClass(driver);
+		headerObject.verifyNameIsUpdated(newName);
 	}
 	
 	@Then("Click on the Learn more button")
 	public void clickOnLearnMore() {
 		homeObject = new HomePage(driver);
-		homeObject.clickLearnMore(driver);
+		homeObject.clickLearnMore();
 	}
 	
 	@And("verify that the user is redirected to learn more page")
 	public void verifyUserIsRedirectedToLearnMore() {
 		homeObject = new HomePage(driver);
-		homeObject.verifyUserIsOnLearnMorePage(driver);
+		homeObject.verifyUserIsOnLearnMorePage();
 	}
 
 	@AfterAll

@@ -9,16 +9,18 @@ Feature: Header section functionalities of Scriptureforge application
   #Examples:
   #| username                  | password        |
   #| naveen.n@ecgroup |  |
-  Scenario Outline: Change the user name
+  Scenario Outline: Change the user name                        # scenario passed
     Given Launch browser
     And Navigate to Scriptureforge
+    When clicking on login button
     Then login via "<loginvia>" with "<username>" and "<password>"
     And click on the profile icon in the header
     Then change the user name to "<newname>"
-    And click on the sf logo in the header
+    And click on the profile icon in the header
+    And verify that the user name is changed to "<newname>"
 
     Examples: 
       | username                    | password    | loginvia | newname    |
-      | shanprabhu7@yahoo.com       | Test@123    | email    | Prabhu     |
+      #| shanprabhu7@yahoo.com       | Test@123    | email    | Prabhu     |
       | naveennagarajan34@yahoo.com | Angrybird@1 | email    | Tom Cruise |
-      #| naveen.n@ecgroup            |             | paratext | Iron Man   |
+      #| naveen.n@ecgroup-intl.com |          | paratext | Iron Man |

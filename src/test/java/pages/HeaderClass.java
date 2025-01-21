@@ -1,5 +1,7 @@
 package pages;
 
+import static org.testng.Assert.assertTrue;
+
 import java.time.Duration;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -21,6 +23,8 @@ public class HeaderClass {
 	private WebElement nameTextBox;
 	@FindBy(xpath = "//button//span[contains(text(),'Update')]")
 	private WebElement updateButton;
+	@FindBy(xpath = "//div[@id=\"user-menu-name\"]")
+	private WebElement nameTextUI;
 
 	WebDriver driver;
 
@@ -29,7 +33,7 @@ public class HeaderClass {
 		PageFactory.initElements(driver, this);
 	}
 
-	public WebDriver sfLogo(WebDriver driver) {
+	public WebDriver sfLogo() {
 		Actions actions = new Actions(driver);
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
 		System.out.println(sfLogoElement.isDisplayed());
@@ -45,7 +49,7 @@ public class HeaderClass {
 		return driver;
 	}
 
-	public WebDriver clickProfile(WebDriver driver) {
+	public WebDriver clickProfile() {
 		Actions actions = new Actions(driver);
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
 		System.out.println(avatarIcon.isDisplayed());
@@ -53,11 +57,19 @@ public class HeaderClass {
 		return driver;
 	}
 
-	public WebDriver changeName(WebDriver driver, String name) {
+	public WebDriver changeName(String name) {
 		editNameIcon.click();
 		nameTextBox.clear();
 		nameTextBox.sendKeys(name);
 		updateButton.click();
+		return driver;
+	}
+	
+	public WebDriver verifyNameIsUpdated(String newname) {
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+		String actualName = nameTextUI.getText();
+		System.out.println(actualName);
+		assertTrue(actualName.equals(newname));
 		return driver;
 	}
 }
