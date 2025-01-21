@@ -18,17 +18,17 @@ public class HomePage {
 		PageFactory.initElements(driver, this);
 	}
 	
-	public WebDriver navigateToHomePage(WebDriver driver) {
-		driver.navigate().to("https://qa.scriptureforge.org/");
+	public WebDriver navigateToHomePage(String baseURL) {
+		driver.navigate().to(baseURL);
 		return driver;
 	}
 	
-	public WebDriver clickLearnMore(WebDriver driver) {
+	public WebDriver clickLearnMore() {
 		learnMoreFooter.click();
 		return driver;
 	}
 	
-	public WebDriver verifyUserIsOnLearnMorePage(WebDriver driver) {
+	public WebDriver verifyUserIsOnLearnMorePage() {
 		System.out.println("Title is :"+ driver.getTitle());
 		assertTrue(driver.getTitle().contains("Getting Started"));
 		return driver;

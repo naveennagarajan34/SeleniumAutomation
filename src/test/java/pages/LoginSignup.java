@@ -6,20 +6,32 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+
+
 public class LoginSignup {
 	
-	public WebDriver clickOnLoginButton(WebDriver driver) {
-		WebElement LoginButton = driver
-				.findElement(By.xpath("//div[@class=\"top-bar\"]//child::a[contains(text(),'Log In')]"));
+	@FindBy(xpath="//div[@class=\"top-bar\"]//child::a[contains(text(),'Log In')]")
+	private WebElement LoginButton;
+	
+	WebDriver driver;
+	
+	public LoginSignup(WebDriver driver) {
+			this.driver = driver;
+			PageFactory.initElements(driver, this);
+	}
+
+	public WebDriver clickOnLoginButton() {
 		LoginButton.click();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		return driver;
 	}
 	
-	public WebDriver loginWithCredentials(String username, String password, WebDriver driver)
+	public WebDriver loginWithCredentials(String username, String password)
 			throws InterruptedException {
 
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
@@ -37,7 +49,7 @@ public class LoginSignup {
 		return driver;
 	}
 
-	public WebDriver loginWithParatext(String mailId, String password, WebDriver driver) {
+	public WebDriver loginWithParatext(String mailId, String password) {
 		WebElement ptLoginButton = driver.findElement(By.xpath("//div[contains(text(),'Log in with paratext')]"));
 		ptLoginButton.click();
 		WebElement emailHolder = driver.findElement(By.xpath("//input[@type='email']"));
