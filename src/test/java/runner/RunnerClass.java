@@ -8,8 +8,8 @@ import io.cucumber.testng.CucumberOptions;
 
 
 @CucumberOptions(
-		features = "src/test/resources/features/homepage.feature", 		// Path to feature files
-		glue = "utilities", 											// Package containing step definitions
+		features = "src/test/resources/features", 		// Path to feature files
+		glue = {"utilities", "steps"}, 											// Package containing step definitions
 		plugin = { 
 					"pretty", 											// Prints detailed logs in the console
 					"html:target/cucumber-reports.html", 				// Generates an HTML report
