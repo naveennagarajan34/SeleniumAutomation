@@ -10,8 +10,7 @@ Feature: Header section functionalities of Scriptureforge application
   #| username                  | password        |
   #| naveen.n@ecgroup |  |
   Scenario Outline: Change the user name                        # scenario passed
-    Given Launch browser
-    And Navigate to Scriptureforge
+    When Navigate to Scriptureforge
     When clicking on login button
     Then login via "<loginvia>" with "<username>" and "<password>"
     And click on the profile icon in the header
