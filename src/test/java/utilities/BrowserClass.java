@@ -6,7 +6,7 @@ import org.openqa.selenium.edge.EdgeDriver;
 
 public class BrowserClass {
 
-	public WebDriver openBrowser(WebDriver driver, String browser) {
+	public WebDriver openBrowser(WebDriver driver, String browser) { // later need to implement headless mode
 		String driverPath = "src/test/Resources/drivers";
 		if (browser.equalsIgnoreCase("chrome")) {
 			System.setProperty("webdriver.chrome.driver", driverPath + "/chromedriver.exe");
