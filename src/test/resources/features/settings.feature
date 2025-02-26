@@ -1,14 +1,14 @@
-Feature: Projects page functionalities
+Feature: Settings Page functionality
 
-  Scenario Outline: Connect to the given project
+  Scenario Outline: Delete the Project
     When Navigate to Scriptureforge
     When clicking on login button
     Then login via "<loginvia>" with "<username>" and "<password>"
     And select the "<project>" and click connect button
-    #Then verify that the project is connected successfully
+    Then verify that the project is connected successfully
+    When clicking on the Settings
+    And click on the Delete button
 
     Examples: 
       | username                  | password | loginvia | project |
       | naveen.n@ecgroup-intl.com | pass     | paratext | PDR     |
-      #| shanprabhu7@yahoo.com       | Test@123    | email    ||
-      #| naveennagarajan34@yahoo.com | Angrybird@1 | email    ||
