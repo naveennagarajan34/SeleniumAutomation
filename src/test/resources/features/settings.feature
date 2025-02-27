@@ -1,7 +1,7 @@
 Feature: Settings Page functionality
 
   Scenario Outline: Delete the Project
-    When Navigate to Scriptureforge
+    Given Navigate to Scriptureforge
     When clicking on login button
     Then login via "<loginvia>" with "<username>" and "<password>"
     And select the "<project>" and click connect button

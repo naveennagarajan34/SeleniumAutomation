@@ -2,6 +2,7 @@ package steps;
 
 import org.openqa.selenium.WebDriver;
 
+import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pages.HomePage;
@@ -23,7 +24,7 @@ public class LoginSignupStepDefinitions {
         this.driver = WebDriverSetup.getDriver();;
     }
 
-	@When("Navigate to Scriptureforge")
+	@Given("Navigate to Scriptureforge")
 	public void navigateToScriptureforge() {
 		homeObject = new HomePage(driver);
 		driver = homeObject.navigateToHomePage(readPropObject.getProperty("baseURL"));
