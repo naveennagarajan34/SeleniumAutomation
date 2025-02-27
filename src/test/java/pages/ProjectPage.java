@@ -30,11 +30,11 @@ public class ProjectPage {
 
 		WebElement projName = driver
 				.findElement(By.xpath("//b[text()='" + projectCode + "']/parent::span/parent::div//a//span[2]"));
-		
+
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", projName);
-		
+
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(50));
-		System.out.println("Connect button enabled ? "+projName.isEnabled());
+		System.out.println("Connect button enabled ? " + projName.isEnabled());
 		projName.click();
 
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
@@ -44,10 +44,20 @@ public class ProjectPage {
 		return driver;
 	}
 
+	public WebDriver openProject(String projectCode) {
+		
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15)); // 10 seconds timeout
+	    WebElement projectCard = wait.until(ExpectedConditions.visibilityOfElementLocated(
+	        By.xpath("//mat-card//child::b[contains(text(),'" + projectCode + "')]")
+	    ));
+		projectCard.click();
+		return driver;
+	}
+
 	public WebDriver verifyProjectIsConnected() {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 		wait.until(ExpectedConditions.visibilityOf(navigationMenu));
-		
+
 		Assert.assertTrue(navigationMenu.isDisplayed(), "Project is not connected successfully");
 		return driver;
 	}

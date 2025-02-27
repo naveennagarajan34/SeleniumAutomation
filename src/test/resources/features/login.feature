@@ -2,7 +2,7 @@ Feature: Login functionality for Scriptureforge
 
   # Login functionality works
   Scenario Outline: User login with valid credentials
-    When Navigate to Scriptureforge
+    Given Navigate to Scriptureforge
     When clicking on login button
     Then login via "<loginvia>" with "<username>" and "<password>"
 

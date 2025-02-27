@@ -21,10 +21,17 @@ public class ProjectsPageStepDefinitions {
 		projectObject = new ProjectPage(driver);
 		projectObject.connectToTheProject(projectCode);
 	}
+	
+	@And("click on the connected project {string}")
+	public void openTheConnectedProject(String projectCode) {
+		projectObject = new ProjectPage(driver);
+		driver = projectObject.openProject(projectCode);
+	}
+	
 	@Then("verify that the project is connected successfully")
 	public void verifyThatProjectIsConnectedSuccessfully() {
 		projectObject = new ProjectPage(driver);
-		projectObject.verifyProjectIsConnected();
+		driver = projectObject.verifyProjectIsConnected();
 	}
 	
 
