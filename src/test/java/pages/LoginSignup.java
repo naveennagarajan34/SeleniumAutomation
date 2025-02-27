@@ -15,8 +15,27 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class LoginSignup {
 	
-	@FindBy(xpath="//div[@class=\"top-bar\"]//child::a[contains(text(),'Log In')]")
+	@FindBy(css="div.login-buttons a.mdl-button--raised")
 	private WebElement LoginButton;
+	
+	@FindBy(css="input[name='email']")
+	private WebElement userNameBox;
+	
+	@FindBy(css="input[name='password']")
+	private WebElement passwordBox;
+	
+	@FindBy(css="span.auth0-label-submit")
+	private WebElement loginButton;
+	
+	@FindBy(css="#email")
+	private WebElement emailHolder;
+	
+	@FindBy(css="input[name='Passwd']")
+	private WebElement pwdTextBox;
+	
+	
+	
+
 	
 	WebDriver driver;
 	
@@ -36,10 +55,8 @@ public class LoginSignup {
 
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
-		WebElement userNameBox = driver.findElement(By.xpath("//input[@name='email']"));
-		WebElement passwordBox = driver.findElement(By.xpath("//input[@name=\"password\"]"));
-		WebElement loginButton = driver.findElement(By.xpath("//button[@name=\"submit\"]"));
 		
+	
 //		WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(20));
 //		wait.until(ExpectedConditions.visibilityOf(userNameBox));
 		
@@ -53,14 +70,15 @@ public class LoginSignup {
 		password = "naveT23LMN#23";
 		WebElement ptLoginButton = driver.findElement(By.xpath("//div[contains(text(),'Log in with paratext')]"));
 		ptLoginButton.click();
-		WebElement emailHolder = driver.findElement(By.xpath("//input[@type='email']"));
+		
 		emailHolder.sendKeys(mailId + Keys.ENTER);
+		
 		WebElement nextButton1 = driver.findElement(By.xpath("//span[contains(text(),'Next')]"));
 		nextButton1.click();
 		 
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 		WebElement passwordBox = wait
-				.until(ExpectedConditions.elementToBeClickable(By.xpath("//input[@type='password']")));
+				.until(ExpectedConditions.elementToBeClickable(pwdTextBox));
 		passwordBox.sendKeys(password);
 
 		WebElement nextButton2 = driver.findElement(By.xpath("//*[@id=\"passwordNext\"]/div/button/span"));

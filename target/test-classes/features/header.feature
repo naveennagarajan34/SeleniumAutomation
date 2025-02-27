@@ -17,9 +17,10 @@ Feature: Header section functionalities of Scriptureforge application
     Then change the user name to "<newname>"
     And click on the profile icon in the header
     And verify that the user name is changed to "<newname>"
+    
 
     Examples: 
       | username                    | password    | loginvia | newname    |
-      #| shanprabhu7@yahoo.com       | Test@123    | email    | Prabhu     |
-      | naveennagarajan34@yahoo.com | Angrybird@1 | email    | Tom Cruise |
-      #| naveen.n@ecgroup-intl.com |          | paratext | Iron Man |
+     #| shanprabhu7@yahoo.com       | Test@123    | email    | Shan     |
+      #| naveennagarajan34@yahoo.com | Angrybird@1 | email    | Tom Cruise |
+      | shanmuga.k@ecgroup-intl.com |          | paratext | Iron Man |

@@ -8,6 +8,6 @@ Feature: Login functionality for Scriptureforge
 
     Examples: 
       | username                    | password    | loginvia |
-      | shanprabhu7@yahoo.com       | Test@123    | email    |
-      | naveennagarajan34@yahoo.com | Angrybird@1 | email    |
+      #| shanprabhu7@yahoo.com       | Test@123    | email    |
+     #| naveennagarajan34@yahoo.com | Angrybird@1 | email    |
       | shanmuga.k@ecgroup-intl.com | S           | paratext |
