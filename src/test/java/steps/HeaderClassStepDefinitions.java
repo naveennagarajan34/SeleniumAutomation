@@ -37,7 +37,7 @@ public class HeaderClassStepDefinitions {
 
 	@And("verify that the user name is changed to {string}")
 	public void verifyUserNameIsUpdatedToGivenName(String newName) {
-		headerObject = new HeaderClass(driver);
+		headerObject = new HeaderClass(driver); 
 		headerObject.verifyNameIsUpdated(newName);
 	}
 }

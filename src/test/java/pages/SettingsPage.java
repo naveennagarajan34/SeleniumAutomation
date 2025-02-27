@@ -17,12 +17,16 @@ public class SettingsPage {
 
 //	@FindBy(xpath = "//mat-drawer[@id='menu-drawer']//a[contains(@href, '/settings')]")
 //	private WebElement settingsMenu;
-	@FindBy(xpath="//span[contains(text(),'Delete')]//parent::button")
+	
+	@FindBy(css="#delete-btn")
 	private WebElement deleteProjectBtn;
+	
 	@FindBy(xpath="//mat-dialog//input")
 	private WebElement projectNameBox;
-	@FindBy(xpath="//mat-dialog//button[@id='project-delete-btn']")
+	
+	@FindBy(css="#project-delete-btn")
 	private WebElement confirmDeleteProjectBtn;
+	
 //	@FindBy(xpath="")
 //	private WebElement projectName;
 	

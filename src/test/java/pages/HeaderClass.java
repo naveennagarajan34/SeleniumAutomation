@@ -11,19 +11,19 @@ import org.openqa.selenium.support.PageFactory;
 
 public class HeaderClass {
 
-	@FindBy(xpath = "//a[@id='sf-logo-button']//mat-icon")
+	@FindBy(css = "#sf-logo-button .mat-icon")
 	private WebElement sfLogoElement;
-	@FindBy(xpath = "//mat-toolbar-row//button[@title='Language']")
+	@FindBy(css = "[title=\"Language\"]")
 	private WebElement sfUiElement;
-	@FindBy(xpath = "//app-avatar")
+	@FindBy(css = "#avatarId")
 	private WebElement avatarIcon;
-	@FindBy(xpath = "//mat-icon[text()='edit']/ancestor::button")
+	@FindBy(css = "#edit-name-btn")
 	private WebElement editNameIcon;
-	@FindBy(xpath = "//h1[contains(text(),'Update your name')]/..//input")
+	@FindBy(css = "input.mat-mdc-form-field-input-control")
 	private WebElement nameTextBox;
-	@FindBy(xpath = "//button//span[contains(text(),'Update')]")
+	@FindBy(css = "#submit-button span.mdc-button__label")
 	private WebElement updateButton;
-	@FindBy(xpath = "//div[@id=\"user-menu-name\"]")
+	@FindBy(css = "div#user-menu-name")
 	private WebElement nameTextUI;
 
 	WebDriver driver;
@@ -66,6 +66,7 @@ public class HeaderClass {
 	}
 	
 	public WebDriver verifyNameIsUpdated(String newname) {
+		clickProfile();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
 		String actualName = nameTextUI.getText();
 		System.out.println(actualName);
