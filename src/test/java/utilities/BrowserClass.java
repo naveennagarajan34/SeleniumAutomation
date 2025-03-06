@@ -11,17 +11,22 @@ public class BrowserClass {
 	public WebDriver openBrowser(WebDriver driver, String browser) { // later need to implement headless mode
 		String driverPath = "src/test/Resources/drivers";
 		if (browser.equalsIgnoreCase("chrome")) {
-			ChromeOptions options = new ChromeOptions();
-	        options.addArguments("--headless");
 			System.setProperty("webdriver.chrome.driver", driverPath + "/chromedriver.exe");
+			ChromeOptions options = new ChromeOptions();
+			options.addArguments("--disable-features=AutomationControlled");
+			options.addArguments("--disable-infobars");
+			options.addArguments("--disable-default-apps");
+			options.addArguments("--disable-notifications");
+			options.addArguments("--disable-extensions");
+//	        options.addArguments("--headless");
 			driver = new ChromeDriver(options);
 		} else if (browser.equalsIgnoreCase("edge")) {
 			EdgeOptions options = new EdgeOptions();
-	        options.addArguments("--headless");
+//	        options.addArguments("--headless");
 			System.setProperty("webdriver.edge.driver", driverPath + "/msedgedriver.exe");
 			driver = new EdgeDriver(options);
 		}
-//		driver.manage().window().maximize();
+		driver.manage().window().maximize();
 		return driver;
 	}
 }

@@ -17,7 +17,7 @@ public class SettingsPageStepDefinitions {
 	}
 	
 	@When("clicking on the Settings")
-	public void clickSettingsButton() {
+	public void clickSettingsButton() throws InterruptedException {
 		settingsObject = new SettingsPage(driver);
 		driver = settingsObject.clickSettingsButton();
 	}
