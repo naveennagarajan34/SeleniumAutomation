@@ -32,5 +32,18 @@ public class UsersPageStepsDefinitions {
     @And("verify that the invite has been sent")
     public void clickSendAndVerifyInviteSent() {
     	userObject = new UsersPage(driver);
+    	userObject.verifyInviteSent();
+    }
+    
+    @And("click on the share button")
+    public void clickShare() {
+    	userObject = new UsersPage(driver);
+    	userObject.clickShareButton();
+    }
+    
+    @And("verify that the invite has been copied")
+    public void verifyLinkCopiedToClipboard() {
+    	userObject = new UsersPage(driver);
+    	userObject.verifyLinkCopied();
     }
 }

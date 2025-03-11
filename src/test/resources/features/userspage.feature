@@ -13,3 +13,18 @@ Feature: Users page Functionalities
     Examples: 
       | username                  | password | loginvia | project |
       | naveen.n@ecgroup-intl.com | pass     | paratext | PDR     |
+
+	@design
+  Scenario Outline: Copy the invite URL and verify
+    Given Navigate to Scriptureforge
+    When clicking on login button
+    Then login via "<loginvia>" with "<username>" and "<password>"
+    And click on the connected project "<project>"
+    Then verify that the project is connected successfully
+    And click on the users
+    Then click on the share button
+    And verify that the invite has been copied
+
+    Examples: 
+      | username                  | password | loginvia | project |
+      | naveen.n@ecgroup-intl.com | pass     | paratext | PDR     |
