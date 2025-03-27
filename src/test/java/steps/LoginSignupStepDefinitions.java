@@ -21,7 +21,7 @@ public class LoginSignupStepDefinitions {
 	WebDriver driver;
 	
     public LoginSignupStepDefinitions() {
-        this.driver = WebDriverSetup.getDriver();;
+        this.driver = WebDriverSetup.getDriver();
     }
 
 	@Given("Navigate to Scriptureforge")
