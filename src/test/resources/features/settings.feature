@@ -27,3 +27,43 @@ Feature: Settings Page functionalities
     Examples: 
       | username                  | password | loginvia | project | source |
       | naveen.n@ecgroup-intl.com | pass     | paratext | PDR     | EASY   |
+
+  Scenario Outline: Enable/Disable the translation suggestions
+    Given Navigate to Scriptureforge
+    When clicking on login button
+    Then login via "<loginvia>" with "<username>" and "<password>"
+    And click on the connected project "<project>"
+    Then verify that the project is connected successfully
+    When clicking on the Settings
+    And "<enable/disable>" the translation suggestions
+
+    Examples: 
+      | username                  | password | loginvia | project | enable/disable |
+      | naveen.n@ecgroup-intl.com | pass     | paratext | PDR     | enable         |
+
+  Scenario Outline: Enable/Disable the Biblical Terms
+    Given Navigate to Scriptureforge
+    When clicking on login button
+    Then login via "<loginvia>" with "<username>" and "<password>"
+    And click on the connected project "<project>"
+    Then verify that the project is connected successfully
+    When clicking on the Settings
+    And "<enable/disable>" the biblical terms
+
+    Examples: 
+      | username                  | password | loginvia | project | enable/disable |
+      | naveen.n@ecgroup-intl.com | pass     | paratext | PDR     | disable        |
+
+  @ExecuteThis
+  Scenario Outline: Enable/Disable the Community checking
+    Given Navigate to Scriptureforge
+    When clicking on login button
+    Then login via "<loginvia>" with "<username>" and "<password>"
+    And click on the connected project "<project>"
+    Then verify that the project is connected successfully
+    When clicking on the Settings
+    And "<enable/disable>" the community checking
+
+    Examples: 
+      | username                  | password | loginvia | project | enable/disable |
+      | naveen.n@ecgroup-intl.com | pass     | paratext | PDR     | disable        |

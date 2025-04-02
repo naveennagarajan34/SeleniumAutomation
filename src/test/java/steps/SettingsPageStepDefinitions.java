@@ -46,4 +46,22 @@ public class SettingsPageStepDefinitions {
 		settingsObject = new SettingsPage(driver);
 		settingsObject.verifySourceAdded();
 	}
+
+	@And("{string} the translation suggestions")
+	public void enable_or_disable_translation_suggestion(String status) {
+		settingsObject = new SettingsPage(driver);
+		settingsObject.enableOrDisableTranslationSuggestion(status);
+	}
+
+	@And("{string} the biblical terms")
+	public void enable_or_disable_biblical_terms(String status) {
+		settingsObject = new SettingsPage(driver);
+		settingsObject.enableOrDisableBiblicalTerms(status);
+	}
+	
+	@And("{string} the community checking")
+	public void enable_or_disable_community_checking(String status) {
+		settingsObject = new SettingsPage(driver);
+		settingsObject.enableOrDisableCommunityChecking(status);
+	}
 }
