@@ -35,6 +35,15 @@ public class SettingsPage {
 	@FindBy(xpath = "//app-project-select/following-sibling::app-write-status//mat-icon")
 	private WebElement sourceCheck;
 
+	@FindBy(css = "mat-checkbox#checkbox-translation-suggestions input[type='checkbox']")
+	private WebElement translationCheckBox;
+	
+	@FindBy(css = "mat-checkbox#checkbox-biblical-terms input[type='checkbox']")
+	private WebElement btCheckBox;
+	
+	@FindBy(css = "mat-checkbox#checkbox-community-checking input[type='checkbox']")
+	private WebElement ccCheckBox;
+
 //	@FindBy(xpath="")
 //	private WebElement projectName;
 
@@ -89,5 +98,59 @@ public class SettingsPage {
 	public void verifySourceAdded() {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30)); // Wait for up to 30 seconds
 		wait.until(driver -> sourceCheck.isDisplayed());
+	}
+
+	public void enableOrDisableTranslationSuggestion(String status) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30)); // Wait for up to 30 seconds
+		wait.until(driver -> translationCheckBox.isEnabled());
+		if (status.equalsIgnoreCase("enable")) {
+			if (translationCheckBox.isSelected()) {
+				return;
+			} else {
+				translationCheckBox.click();
+			}
+		} else {
+			if (translationCheckBox.isSelected()) {
+				translationCheckBox.click();
+			} else {
+				return;
+			}
+		}
+	}
+	
+	public void enableOrDisableBiblicalTerms(String status) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30)); // Wait for up to 30 seconds
+		wait.until(driver -> btCheckBox.isEnabled());
+		if (status.equalsIgnoreCase("enable")) {
+			if (btCheckBox.isSelected()) {
+				return;
+			} else {
+				btCheckBox.click();
+			}
+		} else {
+			if (btCheckBox.isSelected()) {
+				btCheckBox.click();
+			} else {
+				return;
+			}
+		}
+	}
+	
+	public void enableOrDisableCommunityChecking(String status) {
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30)); // Wait for up to 30 seconds
+		wait.until(driver -> ccCheckBox.isEnabled());
+		if (status.equalsIgnoreCase("enable")) {
+			if (ccCheckBox.isSelected()) {
+				return;
+			} else {
+				ccCheckBox.click();
+			}
+		} else {
+			if (ccCheckBox.isSelected()) {
+				ccCheckBox.click();
+			} else {
+				return;
+			}
+		}
 	}
 }
