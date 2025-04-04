@@ -14,11 +14,9 @@ public class BrowserClass {
 			System.setProperty("webdriver.chrome.driver", driverPath + "/chromedriver.exe");
 			ChromeOptions options = new ChromeOptions();
 			options.addArguments("--disable-features=AutomationControlled");
-			options.addArguments("--disable-infobars");
-			options.addArguments("--disable-default-apps");
-			options.addArguments("--disable-notifications");
-			options.addArguments("--disable-extensions");
-//	        options.addArguments("--headless");
+			options.addArguments("--incognito");
+			options.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});	// Removes "chrome is being controlled" banner
+//	        options.addArguments("--headless");														// Run without launching browser
 			driver = new ChromeDriver(options);
 		} else if (browser.equalsIgnoreCase("edge")) {
 			EdgeOptions options = new EdgeOptions();

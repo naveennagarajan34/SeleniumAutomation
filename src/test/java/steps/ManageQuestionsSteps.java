@@ -16,7 +16,7 @@ public class ManageQuestionsSteps {
 
 	public ManageQuestionsSteps() {
 		this.driver = WebDriverSetup.getDriver();
-		;
+		
 	}
 
 	@Then("click on the manage questions")
