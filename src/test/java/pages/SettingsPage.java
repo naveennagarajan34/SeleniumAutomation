@@ -11,8 +11,12 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import utilities.ReusableMethods;
+
 public class SettingsPage {
 	WebDriver driver;
+	
+	ReusableMethods reuseobj;
 
 //	@FindBy(xpath = "//mat-drawer[@id='menu-drawer']//a[contains(@href, '/settings')]")
 //	private WebElement settingsMenu;
@@ -46,6 +50,9 @@ public class SettingsPage {
 
 //	@FindBy(xpath="")
 //	private WebElement projectName;
+	
+	@FindBy(xpath="//mat-drawer[@id='menu-drawer']//a[contains(@href, '/settings')]")
+	private WebElement settingsPage;
 
 	public SettingsPage(WebDriver driver) {
 		this.driver = driver;
@@ -54,13 +61,16 @@ public class SettingsPage {
 
 	public WebDriver clickSettingsButton() throws InterruptedException {
 
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
 		Thread.sleep(Duration.ofSeconds(3));
+//
+//		WebElement settingsLink = wait.until(ExpectedConditions.presenceOfElementLocated(
+//				By.xpath("//mat-drawer[@id='menu-drawer']//a[contains(@href, '/settings')]")));
+		
+		reuseobj=new ReusableMethods(driver);
+		reuseobj.explicit_wait_ele_enabled(settingsPage, 30);
 
-		WebElement settingsLink = wait.until(ExpectedConditions.presenceOfElementLocated(
-				By.xpath("//mat-drawer[@id='menu-drawer']//a[contains(@href, '/settings')]")));
-
-		settingsLink.click();
+		settingsPage.click();
 		return driver;
 	}
 
@@ -69,9 +79,13 @@ public class SettingsPage {
 		String projectName = "Projet de Robotica";
 
 		((JavascriptExecutor) driver).executeScript("window.scrollTo(0, document.body.scrollHeight);");
-
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30)); // Wait for up to 30 seconds
-		wait.until(driver -> deleteProjectBtn.isEnabled()); // Wait until the button is enabled
+//
+//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30)); // Wait for up to 30 seconds
+//		wait.until(driver -> deleteProjectBtn.isEnabled()); // Wait until the button is enabled
+		
+		reuseobj=new ReusableMethods(driver);
+		reuseobj.explicit_wait_ele_enabled(deleteProjectBtn, 30);
+		
 		deleteProjectBtn.click();
 
 		projectNameBox.sendKeys(projectName);
@@ -81,28 +95,45 @@ public class SettingsPage {
 	}
 
 	public void clickOnTheSourceProjectField() {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30)); // Wait for up to 30 seconds
-		wait.until(driver -> sourceProjectField.isEnabled());
+		
+		reuseobj=new ReusableMethods(driver);
+		reuseobj.explicit_wait_ele_enabled(sourceProjectField, 30);
+//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30)); // Wait for up to 30 seconds
+//		wait.until(driver -> sourceProjectField.isEnabled());
 	}
 
 	public void selectSourceProject(String source) {
 		sourceProjectField.clear();
 		sourceProjectField.sendKeys(source);
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30)); // Wait for up to 30 seconds
-		wait.until(driver -> projectsListDialog.isDisplayed());
+		
+		reuseobj=new ReusableMethods(driver);
+		reuseobj.explicit_wait_ele_displayed(projectsListDialog, 30);
+		
+//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30)); // Wait for up to 30 seconds
+//		wait.until(driver -> projectsListDialog.isDisplayed());
+		
 		WebElement sourceElement = driver
 				.findElement(By.xpath("//mat-optgroup/child::mat-option/span[contains(text(),'" + source + "')]"));
 		sourceElement.click();
 	}
 
 	public void verifySourceAdded() {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30)); // Wait for up to 30 seconds
-		wait.until(driver -> sourceCheck.isDisplayed());
+		
+		reuseobj=new ReusableMethods(driver);
+		reuseobj.explicit_wait_ele_displayed(sourceCheck, 30);
+		
+//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30)); // Wait for up to 30 seconds
+//		wait.until(driver -> sourceCheck.isDisplayed());
 	}
 
 	public void enableOrDisableTranslationSuggestion(String status) {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30)); // Wait for up to 30 seconds
-		wait.until(driver -> translationCheckBox.isEnabled());
+		
+		reuseobj=new ReusableMethods(driver);
+		reuseobj.explicit_wait_ele_enabled(translationCheckBox, 30);
+		
+//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30)); // Wait for up to 30 seconds
+//		wait.until(driver -> translationCheckBox.isEnabled());
+		
 		if (status.equalsIgnoreCase("enable")) {
 			if (translationCheckBox.isSelected()) {
 				return;
@@ -119,8 +150,13 @@ public class SettingsPage {
 	}
 	
 	public void enableOrDisableBiblicalTerms(String status) {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30)); // Wait for up to 30 seconds
-		wait.until(driver -> btCheckBox.isEnabled());
+		
+		reuseobj=new ReusableMethods(driver);
+		reuseobj.explicit_wait_ele_enabled(btCheckBox, 30);
+		
+//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30)); // Wait for up to 30 seconds
+//		wait.until(driver -> btCheckBox.isEnabled());
+		
 		if (status.equalsIgnoreCase("enable")) {
 			if (btCheckBox.isSelected()) {
 				return;
@@ -137,8 +173,13 @@ public class SettingsPage {
 	}
 	
 	public void enableOrDisableCommunityChecking(String status) {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30)); // Wait for up to 30 seconds
-		wait.until(driver -> ccCheckBox.isEnabled());
+		
+		reuseobj=new ReusableMethods(driver);
+		reuseobj.explicit_wait_ele_enabled(ccCheckBox, 30);
+		
+//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30)); // Wait for up to 30 seconds
+//		wait.until(driver -> ccCheckBox.isEnabled());
+		
 		if (status.equalsIgnoreCase("enable")) {
 			if (ccCheckBox.isSelected()) {
 				return;

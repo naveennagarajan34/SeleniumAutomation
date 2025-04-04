@@ -1,5 +1,6 @@
 Feature: Users page Functionalities
 
+
   Scenario Outline: Send an Invite link via mail and verify the email sent message
     Given Navigate to Scriptureforge
     When clicking on login button
@@ -14,7 +15,7 @@ Feature: Users page Functionalities
       | username                  | password | loginvia | project |
       | naveen.n@ecgroup-intl.com | pass     | paratext | PDR     |
 
-	@design
+
   Scenario Outline: Copy the invite URL and verify
     Given Navigate to Scriptureforge
     When clicking on login button

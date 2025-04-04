@@ -13,6 +13,7 @@ Feature: Settings Page functionalities
       | username                  | password | loginvia | project |
       | naveen.n@ecgroup-intl.com | pass     | paratext | PDR     |
 
+  
   Scenario Outline: Adding the source project
     Given Navigate to Scriptureforge
     When clicking on login button
@@ -54,7 +55,6 @@ Feature: Settings Page functionalities
       | username                  | password | loginvia | project | enable/disable |
       | naveen.n@ecgroup-intl.com | pass     | paratext | PDR     | disable        |
 
-  @ExecuteThis
   Scenario Outline: Enable/Disable the Community checking
     Given Navigate to Scriptureforge
     When clicking on login button

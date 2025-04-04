@@ -12,6 +12,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import utilities.ReusableMethods;
+
 public class UsersPage {
 	
 	WebDriver driver;
@@ -32,6 +34,10 @@ public class UsersPage {
 	private WebElement uiChange;
 	@FindBy(css="div.mat-mdc-dialog-actions button.mat-unthemed")
 	private WebElement copyButton;
+	
+	By usersLink = By.xpath("//mat-drawer[@id='menu-drawer']//a[contains(@href, '/users')]");
+	
+	ReusableMethods reuseObj;
 
 	
 	public UsersPage(WebDriver driver) {
@@ -41,11 +47,17 @@ public class UsersPage {
 	
 	public void clickOnUsersFromNavBar() throws InterruptedException {
 		Thread.sleep(3000);
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		WebElement usersLink = wait.until(ExpectedConditions.presenceOfElementLocated(
-			    By.xpath("//mat-drawer[@id='menu-drawer']//a[contains(@href, '/users')]")
-			));
-		usersLink.click();
+		
+		reuseObj = new ReusableMethods(driver);
+		
+		reuseObj.explicit_wait_ele_presence(usersLink, 30);
+		
+//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+//		WebElement usersLink = wait.until(ExpectedConditions.presenceOfElementLocated(
+//			    By.xpath("//mat-drawer[@id='menu-drawer']//a[contains(@href, '/users')]")
+//			));
+		
+		driver.findElement(usersLink).click();
 	}
 	
 	public void sendEmailSelectRoleAndInviteLanguage() {
@@ -68,8 +80,12 @@ public class UsersPage {
 		sendButton.click();
 	}
 	public void verifyInviteSent() {
-	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); // Wait up to 10 seconds
-	    wait.until(ExpectedConditions.visibilityOf(snackbar));
+		
+		reuseObj = new ReusableMethods(driver);
+		reuseObj.explicit_wait_ele_visible(snackbar, 10);
+		
+//	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); // Wait up to 10 seconds
+//	    wait.until(ExpectedConditions.visibilityOf(snackbar));
 	    
 	    assertTrue(snackbar.getText().contains("email has been sent"),"Snackbar text does not contain expected text");
 	}
@@ -80,21 +96,35 @@ public class UsersPage {
 		shareBtn.click();
 		uiChange.click();
 		
-	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); // Wait up to 10 seconds
-	    wait.until(ExpectedConditions.visibilityOf(uiChange));
+		reuseObj = new ReusableMethods(driver);
+		reuseObj.explicit_wait_ele_visible(uiChange, 10);
+		
+//	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); // Wait up to 10 seconds
+//	    wait.until(ExpectedConditions.visibilityOf(uiChange));
 		
 		WebElement inviteLanguage = driver.findElement(By.xpath("//mat-list-option/span/child::span[contains(text(),'"+inviteUi+"')]/ancestor::mat-list-option"));
 		
-	    wait.until(ExpectedConditions.visibilityOf(inviteLanguage));
+		reuseObj.explicit_wait_ele_visible(inviteLanguage, 10);
+		
+	    //wait.until(ExpectedConditions.visibilityOf(inviteLanguage));
 		
 		inviteLanguage.click();
-		wait.until(ExpectedConditions.visibilityOf(copyButton));
+		
+		reuseObj.explicit_wait_ele_visible(copyButton, 10);
+		
+		//wait.until(ExpectedConditions.visibilityOf(copyButton));
+		
 		copyButton.click();
 	}
 	
 	public void verifyLinkCopied() {
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); // Wait up to 10 seconds
-	    wait.until(ExpectedConditions.visibilityOf(snackbar));
+		
+		
+		reuseObj = new ReusableMethods(driver);
+		reuseObj.explicit_wait_ele_visible(snackbar, 10);
+		
+//		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); // Wait up to 10 seconds
+//	    wait.until(ExpectedConditions.visibilityOf(snackbar));
 	    
 	    assertTrue(snackbar.getText().contains("copied"),"Snackbar text does not contain expected text");
 	}
