@@ -34,6 +34,8 @@ public class UsersPage {
 	private WebElement uiChange;
 	@FindBy(css="div.mat-mdc-dialog-actions button.mat-unthemed")
 	private WebElement copyButton;
+	@FindBy(xpath="//div[contains(text(),' Checker ')]/ancestor::tr//button")
+	private WebElement threeDotBtn;
 	
 	By usersLink = By.xpath("//mat-drawer[@id='menu-drawer']//a[contains(@href, '/users')]");
 	
@@ -127,6 +129,12 @@ public class UsersPage {
 //	    wait.until(ExpectedConditions.visibilityOf(snackbar));
 	    
 	    assertTrue(snackbar.getText().contains("copied"),"Snackbar text does not contain expected text");
+	}
+	
+	
+	public void clickThreeDotBtn() {
+		
+		threeDotBtn.click();
 	}
 	
 }
