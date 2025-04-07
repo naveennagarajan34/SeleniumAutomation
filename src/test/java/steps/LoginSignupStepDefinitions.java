@@ -1,5 +1,7 @@
 package steps;
 
+import java.io.IOException;
+
 import org.openqa.selenium.WebDriver;
 
 import io.cucumber.java.en.Given;
@@ -9,6 +11,7 @@ import pages.HomePage;
 import pages.LoginSignup;
 import utilities.BrowserClass;
 import utilities.ReadProperties;
+import utilities.ReadWriteExcel;
 import utilities.WebDriverSetup;
 
 public class LoginSignupStepDefinitions {
@@ -37,12 +40,17 @@ public class LoginSignupStepDefinitions {
 	}
 
 	@Then("login via {string} with {string} and {string}")
-	public void valid_and_is_entered(String loginVia, String userName, String password) throws InterruptedException {
+	public void valid_and_is_entered(String loginVia, String userName, String password1) throws InterruptedException, IOException {
+		ReadWriteExcel.loadExcelFile("C:\\Users\\Naveen\\eclipse-workspace\\scriptureforge.xlsx", "credentials");
+		String username = ReadWriteExcel.getCellValue(1, 0);
+		String password = ReadWriteExcel.getCellValue(1, 1);
+		String loginType = ReadWriteExcel.getCellValue(1, 2);
+		System.out.println(username + password + loginType);
 		loginObject = new LoginSignup(driver);
-		if (loginVia.equalsIgnoreCase("email")) {
-			driver = loginObject.loginWithCredentials(userName, password);
-		} else if (loginVia.equalsIgnoreCase("paratext")) {
-			driver = loginObject.loginWithParatext(userName, password);
+		if (loginType.equalsIgnoreCase("email")) {
+			driver = loginObject.loginWithCredentials(username, password);
+		} else if (loginType.equalsIgnoreCase("paratext")) {
+			driver = loginObject.loginWithParatext(username, password);
 		}
 	}
 }
