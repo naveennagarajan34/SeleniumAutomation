@@ -34,10 +34,17 @@ public class UsersPage {
 	private WebElement uiChange;
 	@FindBy(css="div.mat-mdc-dialog-actions button.mat-unthemed")
 	private WebElement copyButton;
-	@FindBy(xpath="//div[contains(text(),' Checker ')]/ancestor::tr//button")
-	private WebElement threeDotBtn;
+	@FindBy (xpath="//span[contains(text(),'Edit roles')]")
+	private WebElement EditPermissionsBtn;
+	@FindBy (css=".mat-mdc-dialog-content h3")
+	private WebElement EditDialog;
+	@FindBy(xpath="//span[text()=' Save ']")
+	private WebElement saveBtn;
+	
 	
 	By usersLink = By.xpath("//mat-drawer[@id='menu-drawer']//a[contains(@href, '/users')]");
+	
+	By roleCol = By.xpath("//div[contains(text(),'Checker')]/ancestor::tr/td[contains(@class,'mat-column-role')]/em");
 	
 	ReusableMethods reuseObj;
 
@@ -131,10 +138,39 @@ public class UsersPage {
 	    assertTrue(snackbar.getText().contains("copied"),"Snackbar text does not contain expected text");
 	}
 	
-	
-	public void clickThreeDotBtn() {
+	public void clickThreeDotBtn(String user) {
 		
+		WebElement threeDotBtn = driver.findElement(By.xpath("//div[contains(text(),'"+user+"')]/ancestor::tr//button"));
 		threeDotBtn.click();
+	}
+	
+	public void EditBtnClick() {
+		
+		EditPermissionsBtn.click();
+		reuseObj = new ReusableMethods(driver);
+		reuseObj.explicit_wait_ele_visible(EditDialog,50);
+		assertTrue(EditDialog.getText().equals("Roles"));
+	}
+	
+	public void updateRole(String role) {
+		
+		WebElement userRole =driver.findElement(By.xpath("//span[text()='"+role+"']/ancestor::div[contains(@class,'mat-internal-form-field')]/div/input"));
+		userRole.click();
+		saveBtn.click();
+		
+		reuseObj = new ReusableMethods(driver);
+		reuseObj.explicit_wait_ele_invisble(EditDialog,30);
+		
+		
+	}
+	
+	public void roleVerify(String role,String user)  {
+		
+		WebElement roleColumn = driver.findElement(By.xpath("//div[contains(text(),'"+user+"')]/ancestor::tr/td[contains(@class,'mat-column-role')]/em"));
+		
+		reuseObj = new ReusableMethods(driver);
+		reuseObj.explicit_wait_ele_presence(roleCol,50);
+		assertTrue(roleColumn.getText().equals(role));
 	}
 	
 }

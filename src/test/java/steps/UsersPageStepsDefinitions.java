@@ -50,29 +50,32 @@ public class UsersPageStepsDefinitions {
     	userObject.verifyLinkCopied();
     }
     
-    @Then("click on the three dot button")
-    public void click_on_the_three_dot_button() {
+    @Then("click on the three dots button of {string}")
+    public void click_on_the_three_dot_button_ofUser(String user) {
     	
     	userObject = new UsersPage(driver);
-    	userObject.clickThreeDotBtn();
+    	userObject.clickThreeDotBtn(user);
     }
     
     @When("Open the Edit roles and permission dialog")
     public void open_the_edit_roles_and_permission_dialog() {
     	
-    	
+    	userObject = new UsersPage(driver);
+    	userObject.EditBtnClick();
     	
     }
 
-    @Then("Change the checker user to viewer user")
-    public void change_the_checker_user_to_viewer_user() {
+    @Then("Change the role of the user to {string}")
+    public void change_the_user_role_to_given_role(String role) {
         
-    	
+    	userObject = new UsersPage(driver);
+    	userObject.updateRole(role);
     }
 
-    @Then("verify that the user role updated to viewer user")
-    public void verify_that_the_user_role_updated_to_viewer_user() {
+    @Then("verify that the {string} role updated to {string}")
+    public void verify_that_the_user_role_updated_to_given_role(String user, String role) {
        
-    	
+    	userObject = new UsersPage(driver);
+    	userObject.roleVerify(role,user);
     }
 }

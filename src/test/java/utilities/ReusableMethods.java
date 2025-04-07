@@ -24,33 +24,42 @@ public class ReusableMethods {
 
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(sec));
 		wait.until(ExpectedConditions.visibilityOf(element));
+
 	}
 
 	public void explicit_wait_ele_enabled(WebElement element, int sec) {
 
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(sec)); 
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(sec));
 		wait.until(driver -> element.isEnabled());
 
 	}
-	
+
 	public void explicit_wait_ele_displayed(WebElement element, int sec) {
 
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(sec)); 
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(sec));
 		wait.until(driver -> element.isDisplayed());
 
 	}
-	
+
 	public void explicit_wait_ele_presence(By element, int sec) {
 
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(sec)); 
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(sec));
 		wait.until(ExpectedConditions.presenceOfElementLocated(element));
 
 	}
-	
+
 	public void implicit_wait_ele(int sec) {
 
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(sec));
 
 	}
+
+	public void explicit_wait_ele_invisble(WebElement element, int sec) {
+
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(sec));
+		wait.until(ExpectedConditions.invisibilityOf(element));
+	}
+
+	
 
 }

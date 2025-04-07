@@ -1,6 +1,5 @@
 Feature: Users page Functionalities
 
-
   Scenario Outline: Send an Invite link via mail and verify the email sent message
     Given Navigate to Scriptureforge
     When clicking on login button
@@ -15,7 +14,6 @@ Feature: Users page Functionalities
       | username                  | password | loginvia | project |
       | naveen.n@ecgroup-intl.com | pass     | paratext | PDR     |
 
-
   Scenario Outline: Copy the invite URL and verify
     Given Navigate to Scriptureforge
     When clicking on login button
@@ -29,22 +27,20 @@ Feature: Users page Functionalities
     Examples: 
       | username                  | password | loginvia | project |
       | naveen.n@ecgroup-intl.com | pass     | paratext | PDR     |
-      
-      @userrole
-  Scenario Outline: Change checker user to viewer user
-  
+
+  @userrole
+  Scenario Outline: Update non PT User role
     Given Navigate to Scriptureforge
     When clicking on login button
     Then login via "<loginvia>" with "<username>" and "<password>"
-     And click on the connected project "<project>"
+    And click on the connected project "<project>"
     Then verify that the project is connected successfully
     When click on the users
-    Then click on the three dot button
+    Then click on the three dots button of "<user>"
     And Open the Edit roles and permission dialog
-    Then Change the checker user to viewer user
-    And verify that the user role updated to viewer user
+    Then Change the role of the user to "<role>"
+    And verify that the "<user>" role updated to "<role>"
 
     Examples: 
-      | username                  | password | loginvia | project |
-      | naveen.n@ecgroup-intl.com | pass     | paratext | PDR     |
-      
+      | username                  | password | loginvia | project | user    | role      |
+      | naveen.n@ecgroup-intl.com | pass     | paratext | PDR     | Checker | Commenter |
