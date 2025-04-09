@@ -25,7 +25,7 @@ public class ProjectsPageStepDefinitions {
 	@And("click on the connected project {string}")
 	public void openTheConnectedProject(String projectCode) {
 		projectObject = new ProjectPage(driver);
-		driver = projectObject.openProject(projectCode);
+		projectObject.openProject(projectCode);
 	}
 	
 	@Then("verify that the project is connected successfully")

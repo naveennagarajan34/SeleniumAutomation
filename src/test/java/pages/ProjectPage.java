@@ -58,15 +58,16 @@ public class ProjectPage {
 		return driver;
 	}
 
-	public WebDriver openProject(String projectCode) {
+	public void openProject(String projectCode) {
 		
-		
-		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15)); // 10 seconds timeout
+//		reuseObj.implicit_wait_ele(30);
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		String xpath = "//mat-card//b[contains(text(),'" + projectCode + "')]";
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15)); // 15 seconds timeout
 	    WebElement projectCard = wait.until(ExpectedConditions.visibilityOfElementLocated(
-	        By.xpath("//mat-card//child::b[contains(text(),'" + projectCode + "')]")
+	        By.xpath(xpath)
 	    ));
 		projectCard.click();
-		return driver;
 	}
 
 	public WebDriver verifyProjectIsConnected() {
@@ -77,6 +78,7 @@ public class ProjectPage {
 		
 //		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
 //		wait.until(ExpectedConditions.visibilityOf(navigationMenu));
+		
 
 		Assert.assertTrue(navigationMenu.isDisplayed(), "Project is not connected successfully");
 		return driver;

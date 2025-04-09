@@ -41,7 +41,7 @@ public class LoginSignupStepDefinitions {
 
 	@Then("login via {string} with {string} and {string}")
 	public void valid_and_is_entered(String loginVia, String userName, String password1) throws InterruptedException, IOException {
-		ReadWriteExcel.loadExcelFile("C:\\Users\\Naveen\\eclipse-workspace\\scriptureforge.xlsx", "credentials");
+		ReadWriteExcel.loadExcelFile("C:\\Users\\Prabhu\\eclipse-project\\scriptureforge.xlsx", "credentials");
 		String username = ReadWriteExcel.getCellValue(1, 0);
 		String password = ReadWriteExcel.getCellValue(1, 1);
 		String loginType = ReadWriteExcel.getCellValue(1, 2);
