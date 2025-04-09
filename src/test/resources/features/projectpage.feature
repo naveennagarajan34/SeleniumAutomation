@@ -9,9 +9,7 @@ Feature: Projects page functionalities
   #Examples:
   #| username                  | password | loginvia | project |
   #| naveen.n@ecgroup-intl.com | pass     | paratext | PDR     |
-  #
-  #| shanprabhu7@yahoo.com       | Test@123    | email    ||
-  #| naveennagarajan34@yahoo.com | Angrybird@1 | email    ||
+ 
   
   @Project
   Scenario Outline: Connect to the given already connected project

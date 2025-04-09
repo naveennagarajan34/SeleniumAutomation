@@ -7,6 +7,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import utilities.ReusableMethods;
+
 public class NavigationMenu {
 	WebDriver driver;
 
@@ -20,12 +22,16 @@ public class NavigationMenu {
 	WebElement questionsPage;
 	@FindBy(xpath = "//span[contains(text(),'Manage questions')]/../parent::a")
 	WebElement manageQuestionsPage;
-	@FindBy(xpath = "//span[contains(text(),'Sync')]/../parent::a")
+	@FindBy(xpath = "//span[contains(text(),'Sync')]/ancestor::a")
+	//@FindBy(id="sync-icon")
 	WebElement syncPage;
 	@FindBy(xpath = "//span[contains(text(),'Users')]/../parent::a")
 	WebElement usersPage;
 	@FindBy(xpath = "//span[contains(text(),'Settings')]/../parent::a")
 	WebElement settingsPage;
+	
+	@FindBy(css="app-root mat-progress-bar")
+	WebElement progressBar;
 
 	public NavigationMenu(WebDriver driver) {
 		this.driver = driver;
@@ -59,7 +65,12 @@ public class NavigationMenu {
 	}
 
 	public WebDriver clickToNavigateTo_Sync() {
+		
+		ReusableMethods reuse = new ReusableMethods(driver);
+		reuse.explicit_wait_ele_invisble(progressBar, 30);
+		reuse.explicit_wait_ele_displayed(syncPage, 30);
 		syncPage.click();
+		
 		return driver;
 	}
 
