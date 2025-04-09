@@ -23,7 +23,7 @@ public class ReadProperties {
 		Properties prop = new Properties();
 		String value;
 		try {
-			FileInputStream fileInputStream = new FileInputStream("configuration.properties");
+			FileInputStream fileInputStream = new FileInputStream("config.properties");
 			prop.load(fileInputStream);
 		} catch (Exception e) {
 			e.printStackTrace();
