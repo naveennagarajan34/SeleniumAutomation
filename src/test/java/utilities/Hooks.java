@@ -5,7 +5,6 @@ import com.aventstack.extentreports.Status;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
-import utilities.ExtentReport;
 
 public class Hooks {
     private ExtentReports extent = ExtentReport.getReporter();
