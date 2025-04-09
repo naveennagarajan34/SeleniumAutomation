@@ -39,13 +39,12 @@ public class LoginSignupStepDefinitions {
 		driver = loginObject.clickOnLoginButton();
 	}
 
-	@Then("login via {string} with {string} and {string}")
-	public void valid_and_is_entered(String loginVia, String userName, String password1) throws InterruptedException, IOException {
-		ReadWriteExcel.loadExcelFile("C:\\Users\\Prabhu\\eclipse-project\\scriptureforge.xlsx", "credentials");
+	@Then("login with valid user name and password")
+	public void valid_and_is_entered() throws InterruptedException, IOException {
+		ReadWriteExcel.loadExcelFile("C:\\Users\\Naveen\\eclipse-workspace\\scriptureforge.xlsx", "credentials");
 		String username = ReadWriteExcel.getCellValue(1, 0);
 		String password = ReadWriteExcel.getCellValue(1, 1);
 		String loginType = ReadWriteExcel.getCellValue(1, 2);
-		System.out.println(username + password + loginType);
 		loginObject = new LoginSignup(driver);
 		if (loginType.equalsIgnoreCase("email")) {
 			driver = loginObject.loginWithCredentials(username, password);
