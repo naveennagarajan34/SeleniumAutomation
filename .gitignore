@@ -64,3 +64,6 @@ hs_err_pid*
 *.xml
 rerun.txt
 /bin/
+
+# ignore screenshots captured on failure
+/screenshots/
