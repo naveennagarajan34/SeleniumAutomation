@@ -44,6 +44,8 @@ public class NavigationMenu {
 	}
 
 	public WebDriver clickToNavigateTo_EditReview() {
+		ReusableMethods reuse = new ReusableMethods(driver);
+		reuse.explicit_wait_ele_invisble(progressBar, 30);
 		editReviewPage.click();
 		return driver;
 	}

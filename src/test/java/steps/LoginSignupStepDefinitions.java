@@ -41,7 +41,9 @@ public class LoginSignupStepDefinitions {
 
 	@Then("login with valid user name and password")
 	public void valid_and_is_entered() throws InterruptedException, IOException {
+
 		ReadWriteExcel.loadExcelFile(readPropObject.getProperty("excel_data_path"), "credentials");
+
 		String username = ReadWriteExcel.getCellValue(1, 0);
 		String password = ReadWriteExcel.getCellValue(1, 1);
 		String loginType = ReadWriteExcel.getCellValue(1, 2);
