@@ -54,4 +54,12 @@ public class LoginSignupStepDefinitions {
 			driver = loginObject.loginWithParatext(username, password);
 		}
 	}
+	
+	@Then("click on the logout button and verify")
+	public void click_on_the_logout_button_and_verify() {
+	   
+		loginObject = new LoginSignup(driver);
+		loginObject.logoutBtnclick();
+		
+	}
 }

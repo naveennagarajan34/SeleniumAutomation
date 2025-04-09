@@ -1,7 +1,10 @@
 package pages;
 
+import static org.testng.Assert.assertTrue;
+
 import java.time.Duration;
 
+import org.jspecify.annotations.Nullable;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -11,12 +14,14 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import utilities.ReusableMethods;
+
 
 
 public class LoginSignup {
 	
 	@FindBy(css="div.login-buttons a.mdl-button--raised")
-	private WebElement LoginButton;
+	private WebElement loginButton;
 	
 	@FindBy(css="input[name='email']")
 	private WebElement userNameBox;
@@ -25,7 +30,7 @@ public class LoginSignup {
 	private WebElement passwordBox;
 	
 	@FindBy(css="span.auth0-label-submit")
-	private WebElement loginButton;
+	private WebElement authLoginButton;
 	
 	@FindBy(css="#email")
 	private WebElement emailHolder;
@@ -33,9 +38,10 @@ public class LoginSignup {
 	@FindBy(css="input[name='Passwd']")
 	private WebElement pwdTextBox;
 	
+	@FindBy(id="log-out-link")
+	private WebElement logoutBtn;
 	
-	
-
+	ReusableMethods reuse; 
 	
 	WebDriver driver;
 	
@@ -45,7 +51,7 @@ public class LoginSignup {
 	}
 
 	public WebDriver clickOnLoginButton() {
-		LoginButton.click();
+		loginButton.click();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		return driver;
 	}
@@ -62,7 +68,7 @@ public class LoginSignup {
 		
 		userNameBox.sendKeys(username);
 		passwordBox.sendKeys(password);
-		loginButton.click();
+		authLoginButton.click();
 		return driver;
 	}
 
@@ -86,5 +92,14 @@ public class LoginSignup {
 		return driver;
 	}
 
-
+	public void logoutBtnclick() {
+		
+		logoutBtn.click();
+		
+		 reuse = new ReusableMethods(driver);
+		 
+		 reuse.explicit_wait_ele_visible(loginButton, 30);
+		
+		assertTrue(loginButton.isDisplayed());
+	}
 }
