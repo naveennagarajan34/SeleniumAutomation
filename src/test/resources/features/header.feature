@@ -2,6 +2,7 @@ Feature: Header section functionalities of Scriptureforge application
 
   Scenario Outline: SF Logo navigation
     Given Navigate to Scriptureforge
+    When clicking on login button
     Then login with valid user name and password
     And click on the sf logo in the header
 
