@@ -66,4 +66,4 @@ rerun.txt
 /bin/
 
 # ignore screenshots captured on failure
-/screenshots/
+screenshots/*
