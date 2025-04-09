@@ -67,7 +67,6 @@ public class LoginSignup {
 	}
 
 	public WebDriver loginWithParatext(String mailId, String password) {
-		password = "naveT23LMN#23";
 		WebElement ptLoginButton = driver.findElement(By.xpath("//div[contains(text(),'Log in with paratext')]"));
 		ptLoginButton.click();
 		
