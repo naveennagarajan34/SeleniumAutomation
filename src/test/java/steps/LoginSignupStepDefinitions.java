@@ -15,24 +15,24 @@ import utilities.ReadWriteExcel;
 import utilities.WebDriverSetup;
 
 public class LoginSignupStepDefinitions {
-	
+
 	LoginSignup loginObject;
 	BrowserClass browserObject;
 	HomePage homeObject;
 	ReadProperties readPropObject = new ReadProperties();
-	
+
 	WebDriver driver;
-	
-    public LoginSignupStepDefinitions() {
-        this.driver = WebDriverSetup.getDriver();
-    }
+
+	public LoginSignupStepDefinitions() {
+		this.driver = WebDriverSetup.getDriver();
+	}
 
 	@Given("Navigate to Scriptureforge")
 	public void navigateToScriptureforge() {
 		homeObject = new HomePage(driver);
 		driver = homeObject.navigateToHomePage(readPropObject.getProperty("baseURL"));
 	}
-	
+
 	@When("clicking on login button")
 	public void clickOnLoginButton() {
 		loginObject = new LoginSignup(driver);
@@ -41,7 +41,7 @@ public class LoginSignupStepDefinitions {
 
 	@Then("login with valid user name and password")
 	public void valid_and_is_entered() throws InterruptedException, IOException {
-		ReadWriteExcel.loadExcelFile("C:\\Users\\Naveen\\eclipse-workspace\\scriptureforge.xlsx", "credentials");
+		ReadWriteExcel.loadExcelFile(readPropObject.getProperty("excel_data_path"), "credentials");
 		String username = ReadWriteExcel.getCellValue(1, 0);
 		String password = ReadWriteExcel.getCellValue(1, 1);
 		String loginType = ReadWriteExcel.getCellValue(1, 2);
