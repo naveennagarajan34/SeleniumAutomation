@@ -26,6 +26,13 @@ public class ReusableMethods {
 		wait.until(ExpectedConditions.visibilityOf(element));
 
 	}
+	
+	public void explicit_wait_ele_clickable(WebElement element, int sec) {
+
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(sec));
+		wait.until(ExpectedConditions.elementToBeClickable(element));
+
+	}
 
 	public void explicit_wait_ele_enabled(WebElement element, int sec) {
 
