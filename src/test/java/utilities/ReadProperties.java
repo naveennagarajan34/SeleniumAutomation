@@ -7,7 +7,7 @@ import java.util.Properties;
 
 public class ReadProperties {
 	Properties prop = new Properties();
-	String filePath = "configuration.properties";
+	String filePath = "config.properties";
 
 	public void setProperty(String key, String value) {
 		try (FileOutputStream outputStream = new FileOutputStream(filePath)) {

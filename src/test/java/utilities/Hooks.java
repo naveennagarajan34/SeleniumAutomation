@@ -15,7 +15,7 @@ public class Hooks {
         test = extent.createTest(scenario.getName());
     }
 
-    @After
+//    @After
     public void tearDown(Scenario scenario) {
         if (scenario.isFailed()) {
             test.log(Status.FAIL, "Scenario Failed: " + scenario.getName());
