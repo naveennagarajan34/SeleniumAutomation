@@ -25,10 +25,19 @@ public class ManageQuestionsSteps {
 		driver = navigate.clickToNavigateTo_ManageQuestions();
 	}
 
-	@And("click Add Questions button and enter the scripture reference and verify")
-	public void clickAddQuestionsButton() {
+	@And("click Add Questions button and enter the scripture reference {string},{string},{string} and verify")
+	public void clickAddQuestionsButton(String starref, String endref,String question) {
 		manage = new ManageQuestionsPage(driver);
 		driver = manage.click_AddQuestionsButton();
-		manage.enter_scripture_reference("GEN 1:1", "GEN 1:2", "This is sample question");
+		manage.enter_scripture_reference(starref, endref, question);
 	}
+	
+	@Then("click on the archive button on the {string}")
+	public void click_on_the_archive_button_on_the(String string) {
+	    
+		manage = new ManageQuestionsPage(driver);
+		manage.archiveQuestion(string);
+		
+	}
+
 }
