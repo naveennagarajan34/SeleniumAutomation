@@ -1,5 +1,7 @@
 package pages;
 
+import java.time.Duration;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -10,6 +12,7 @@ import utilities.ReusableMethods;
 
 public class EditAndReviewPage {
 
+	ReusableMethods reusable;
 	WebDriver driver;
 
 	@FindBy(xpath = "//mat-select[@panelclass='book-select-menu']")
@@ -24,6 +27,10 @@ public class EditAndReviewPage {
 	private WebElement openHistoryBtn;
 	@FindBy(xpath = "//div[@role='menu']//button//span[contains(text(),'Resource')]/ancestor::button")
 	private WebElement openResourceBtn;
+	@FindBy(xpath = "//input/parent::div/input")
+	private WebElement projectSelectionField;
+	@FindBy(css = "button[color='primary']")
+	private WebElement resourceSaveButton;
 
 	public EditAndReviewPage(WebDriver driver) {
 		this.driver = driver;
@@ -47,13 +54,21 @@ public class EditAndReviewPage {
 		addTabBtn.click();
 	}
 
-	public void openTab(String tabname) {
-		if (tabname.toLowerCase().contains("biblical")) {
-			openBiblicalTermsBtn.click();
-		} else if (tabname.toLowerCase().contains("history")) {
-			openHistoryBtn.click();
-		} else if (tabname.toLowerCase().contains("Resource")) {
-			openResourceBtn.click();
-		}
+	public void openBiblicalTab() {
+		openBiblicalTermsBtn.click();
+	}
+
+	public void openResourceTab() {
+		openResourceBtn.click();
+	}
+
+	public void selectResourceProject(String resource) {
+		reusable = new ReusableMethods(driver);
+		WebElement element = driver.findElement(By.xpath("//div[contains(text(),'resource')]"));
+		reusable.explicit_wait_ele_visible(element, 15);
+		projectSelectionField.sendKeys(resource);
+		WebElement resourceCard = driver.findElement(By.xpath("//mat-option/span[contains(text(), 'engASV')]"));
+		resourceCard.click();
+		resourceSaveButton.click();
 	}
 }

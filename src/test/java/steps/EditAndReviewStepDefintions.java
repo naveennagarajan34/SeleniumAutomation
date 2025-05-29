@@ -33,17 +33,30 @@ public class EditAndReviewStepDefintions {
 		editObj = new EditAndReviewPage(driver);
 		editObj.clickBook(bookName, chapterNo, verseNo);
 	}
-	
+
 	@Then("click on add tab button")
 	public void click_add_tab_button() {
 		editObj = new EditAndReviewPage(driver);
 		editObj.clickOnAddTabButton();
 	}
-	
-	@And("select the {string} and verify")
-	public void select_and_open_the_given_tab(String tab) {
+
+	@And("select the biblical terms tab and verify")
+	public void select_and_open_the_given_tab() {
 		editObj = new EditAndReviewPage(driver);
-		editObj.openTab(tab);
+		editObj.openBiblicalTab();
+	}
+
+	@And("select the resource tab")
+	public void select_resource_tab() {
+		editObj = new EditAndReviewPage(driver);
+		editObj.openResourceTab();
+
+	}
+
+	@Then("select the {string} from the Open Resource Tab")
+	public void select_resource_project(String resource) {
+		editObj = new EditAndReviewPage(driver);
+		editObj.selectResourceProject(resource);
 	}
 
 }
