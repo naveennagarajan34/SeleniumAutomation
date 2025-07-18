@@ -6,7 +6,7 @@ import io.cucumber.testng.CucumberOptions;
 
 
 @CucumberOptions(
-		features = "src/test/resources/features", 		// Path to feature files
+		features = "src/test/resources/features/homepage.feature", 		// Path to feature files
 		glue = {"utilities", "steps"}, 											// Package containing step definitions
 
 		tags = "@test",

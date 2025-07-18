@@ -10,3 +10,5 @@ Feature: Home page redirection links
     And Verify that the user is redirected to the Privacy page
     Then Click on the Community Support button
     And Verify that the new tab opened for Community Support page
+    Then Click on the Help button
+    And Verify that the new tab opened for help page
