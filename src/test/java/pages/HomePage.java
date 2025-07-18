@@ -58,7 +58,7 @@ public class HomePage {
 	public WebDriver verifyUserIsOnTermsMorePage() {
 
 		System.out.println("Current URL is :" + driver.getCurrentUrl());
-		assertTrue(driver.getCurrentUrl().contains("Terms"));
+		assertTrue(driver.getCurrentUrl().contains("terms"));
 		return driver;
 	}
 
@@ -73,7 +73,7 @@ public class HomePage {
 	public WebDriver verifyUserIsOnPrivacyMorePage() {
 
 		System.out.println("Current URL is :" + driver.getCurrentUrl());
-		assertTrue(driver.getCurrentUrl().contains("Privacy"));
+		assertTrue(driver.getCurrentUrl().contains("privacy"));
 		return driver;
 	}
 	

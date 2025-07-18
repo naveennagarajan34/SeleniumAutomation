@@ -72,7 +72,7 @@ public class UsersPage {
 	public void sendEmailSelectRoleAndInviteLanguage() {
 		String role = "Viewer";				// need to be updated to dynamic
 		String locale = "Bahasa";			// need to be updated to dynamic
-		String recipientMailId = "Naveen@naveen.com"; // need to be updated to dynamic
+		String recipientMailId = "Naveen.n+qa@ecgroup-intl.com"; // need to be updated to dynamic
 		
 		emailField.sendKeys(recipientMailId);
 		

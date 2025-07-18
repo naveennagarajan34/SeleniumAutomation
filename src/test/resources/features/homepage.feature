@@ -1,6 +1,6 @@
-Feature: Home page links
+Feature: Home page redirection links
 
-  Scenario: Verify the redirection on clicking Learn more
+  Scenario: Verify the redirection on clicking Footer links 
     Given Navigate to Scriptureforge
     Then Click on the Learn more button
     And verify that the user is redirected to learn more page

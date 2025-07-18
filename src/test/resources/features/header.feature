@@ -17,4 +17,4 @@ Feature: Header section functionalities of Scriptureforge application
 
     Examples: 
       | newname |
-      | Navin   |
+      | Naveen   |
