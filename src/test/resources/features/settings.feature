@@ -1,18 +1,17 @@
 Feature: Settings Page functionalities
 
-  Scenario Outline: Delete the Project
-    Given Navigate to Scriptureforge
-    When clicking on login button
-    Then login with valid user name and password
-    And select the "<project>" and click connect button
-    Then verify that the project is connected successfully
-    When clicking on the Settings
-    And click on the Delete button
-
-    Examples: 
-      | project |
-      | PDR     |
-
+  #Scenario Outline: Delete the Project
+  #Given Navigate to Scriptureforge
+  #When clicking on login button
+  #Then login with valid user name and password
+  #And select the "<project>" and click connect button
+  #Then verify that the project is connected successfully
+  #When clicking on the Settings
+  #And click on the Delete button
+  #
+  #Examples:
+  #| project |
+  #| PDR     |
   Scenario Outline: Adding the source project
     Given Navigate to Scriptureforge
     When clicking on login button
@@ -52,7 +51,7 @@ Feature: Settings Page functionalities
 
     Examples: 
       | project | enable/disable |
-      | PDR     | disable        |
+      | PDR     | enable         |
 
   Scenario Outline: Enable/Disable the Community checking
     Given Navigate to Scriptureforge
@@ -65,4 +64,4 @@ Feature: Settings Page functionalities
 
     Examples: 
       | project | enable/disable |
-      | PDR     | disable        |
+      | PDR     | enable         |

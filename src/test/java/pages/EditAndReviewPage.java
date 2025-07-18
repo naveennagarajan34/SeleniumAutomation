@@ -55,6 +55,8 @@ public class EditAndReviewPage {
 	}
 
 	public void openBiblicalTab() {
+		reusable = new ReusableMethods(driver);
+		reusable.explicit_wait_ele_displayed(openBiblicalTermsBtn, 3);
 		openBiblicalTermsBtn.click();
 	}
 
