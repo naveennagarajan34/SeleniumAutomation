@@ -77,4 +77,17 @@ public class HomePageStepDefinitions {
 		
 	}
 	
+	@Then("Click on the Help button")
+	public void click_on_the_help_button() throws InterruptedException {
+		
+		homeObject = new HomePage(driver);
+		driver = homeObject.clickHelpPage();
+		
+	}
+
+	@Then("Verify that the new tab opened for help page")
+	public void verify_that_the_new_tab_opened_for_help_page() {
+	    
+	}
+	
 }
