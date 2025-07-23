@@ -10,7 +10,7 @@ public class ProjectsPageStepDefinitions {
 
 	ProjectPage projectObject;
 	
-	private WebDriver driver;
+	private WebDriver driver; 
 
 	public ProjectsPageStepDefinitions() {
 		this.driver = WebDriverSetup.getDriver();

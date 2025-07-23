@@ -46,7 +46,7 @@ public class NavigationMenu {
 	public WebDriver clickToNavigateTo_EditReview() {
 		ReusableMethods reuse = new ReusableMethods(driver);
 		reuse.explicit_wait_ele_invisble(progressBar, 30);
-		editReviewPage.click();
+		editReviewPage.click();         
 		return driver;
 	}
 
@@ -61,7 +61,8 @@ public class NavigationMenu {
 		return driver;
 	}
 
-	public WebDriver clickToNavigateTo_QuestionsAnswers() {
+	public WebDriver clickToNavigateTo_QuestionsAnswers() throws InterruptedException {
+		Thread.sleep(Duration.ofSeconds(3));
 		questionsPage.click();
 		return driver;
 	}

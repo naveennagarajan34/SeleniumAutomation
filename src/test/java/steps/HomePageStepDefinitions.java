@@ -8,7 +8,7 @@ import pages.HomePage;
 import utilities.WebDriverSetup;
 
 public class HomePageStepDefinitions {
-
+ 
 	HomePage homeObject;
 	
 	private WebDriver driver;
