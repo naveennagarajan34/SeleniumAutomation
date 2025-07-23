@@ -20,7 +20,7 @@ public class LoginSignupStepDefinitions {
 	BrowserClass browserObject;
 	HomePage homeObject;
 	ReadProperties readPropObject = new ReadProperties();
-
+ 
 	WebDriver driver;
 
 	public LoginSignupStepDefinitions() {

@@ -54,7 +54,7 @@ public class ProjectPage {
 		
 		WebElement connectButton = driver.findElement(By.xpath("//span[contains(text(),'Connect')]"));
 		connectButton.click();
-
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
 		return driver;
 	}
 
@@ -68,6 +68,7 @@ public class ProjectPage {
 	        By.xpath(xpath)
 	    ));
 		projectCard.click();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
 	}
 
 	public WebDriver verifyProjectIsConnected() {
