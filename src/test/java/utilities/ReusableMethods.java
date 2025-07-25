@@ -66,6 +66,15 @@ public class ReusableMethods {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(sec));
 		wait.until(ExpectedConditions.invisibilityOf(element));
 	}
+	
+	public boolean ele_disappeared(WebElement element, int sec) {
+		
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+		boolean playiconNotVisible = wait.until(ExpectedConditions.invisibilityOf(element));
+		return playiconNotVisible;
+		
+		
+	}
 
 	
 

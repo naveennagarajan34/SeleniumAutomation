@@ -1,6 +1,8 @@
 package steps;
 
+
 import org.openqa.selenium.WebDriver;
+
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
@@ -48,6 +50,26 @@ public class QuestionsAndAnswersStepDefinitions {
 		String bookName = book[0]+" "+book[1];
 		System.out.println(bookName);
 		qaObj.uploadAudioFiles(bookName);
+	}
+	
+	@Then("verify that the play icon appeared")
+	public void verify_that_the_play_icon_appeared() {
+	   qaObj.verifyPlayIconAppeared();
+	}
+
+	@Then("click delete button on the audio and timing file")
+	public void click_delete_button_on_the_audio_and_timing_file() {
+		qaObj.clickDeleteBtns();
+	}
+
+	@Then("click on the save button")
+	public void click_on_the_save_button() {
+	   qaObj.clickSaveBtn();
+	}
+
+	@Then("verify that the play icon disappeared")
+	public void verify_that_the_play_icon_disappeared() throws InterruptedException {
+	   qaObj.verifyPlayIconDisappeared();
 	}
 	
 	
