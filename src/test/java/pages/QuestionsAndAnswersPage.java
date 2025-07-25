@@ -7,12 +7,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 
 import utilities.ReusableMethods;
 
 public class QuestionsAndAnswersPage {
-	ReusableMethods reusable;
+	
 	WebDriver driver;
+	ReusableMethods reusable = new ReusableMethods(driver);
 
 	@FindBy(css = "button.add-audio-button")
 	private WebElement manageAudioButton;
@@ -24,6 +26,15 @@ public class QuestionsAndAnswersPage {
 	private WebElement uploadInputField;
 	@FindBy(css = "button#audio-save-btn")
 	private WebElement audioSaveButton;
+	@FindBy(xpath="//mat-icon[text()='play_circle_outline']/parent::button")
+	private WebElement playIcon;
+	@FindBy(css = ".wrapper-audio .delete")
+	private WebElement audioDeleteButton;
+	@FindBy(css = ".wrapper-timing .delete")
+	private WebElement timingDataDeleteButton;
+	@FindBy(css=".cdk-overlay-backdrop")
+	private WebElement overlayLocator;
+	
 
 	public QuestionsAndAnswersPage(WebDriver driver) {
 		this.driver = driver;
@@ -33,8 +44,8 @@ public class QuestionsAndAnswersPage {
 	public void selectTheBook(String bookName, String chapterNo, String verseNo) {
 		bookDropdown.click();
 		WebElement book = driver.findElement(By.xpath("//span[text()='" + bookName + "']/parent::mat-option"));
-		ReusableMethods reuse = new ReusableMethods(driver);
-		reuse.explicit_wait_ele_visible(book, 30);
+		
+		reusable.explicit_wait_ele_visible(book, 30);
 		book.click();
 		chapterDropdown.click();
 		WebElement chapter = driver.findElement(By.xpath("//span[text()='" + chapterNo + "']/parent::mat-option"));
@@ -42,8 +53,12 @@ public class QuestionsAndAnswersPage {
 	}
 
 	public void clickOnManageAudio() {
+		
+		reusable.explicit_wait_ele_invisble(overlayLocator,30);
+		reusable.explicit_wait_ele_clickable(manageAudioButton, 0);
 		manageAudioButton.click();
 	}
+	
 	public void uploadAudioFiles(String book) {
 	    File audioFile = new File("src/test/resources/AudioFiles/John 1.mp3");
 	    File timingFile = new File("src/test/resources/AudioFiles/John 1.txt");
@@ -56,4 +71,36 @@ public class QuestionsAndAnswersPage {
 	    uploadInputField.sendKeys(audioFilePath + "\n" + timingFilePath);
 	    audioSaveButton.click();
 	}
+	
+	public void verifyPlayIconAppeared() {
+		
+		reusable.explicit_wait_ele_visible(playIcon,30);
+		
+		Assert.assertTrue(playIcon.isDisplayed(), "PlayIcon is visible");
+
+	}
+	
+	public void clickDeleteBtns() {
+		
+		audioDeleteButton.click();
+		timingDataDeleteButton.click();
+}
+	
+	public void clickSaveBtn() {
+		
+		audioSaveButton.click();
+	}
+	
+	public void verifyPlayIconDisappeared() throws InterruptedException {
+		
+		Thread.sleep(3000);
+		boolean playiconNotVisible = reusable.ele_disappeared(playIcon, 30);
+		Assert.assertEquals(true, playiconNotVisible);
+		
+
+	}
+	
+	
+	
+	
 }
