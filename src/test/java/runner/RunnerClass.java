@@ -8,7 +8,7 @@ import io.cucumber.testng.CucumberOptions;
 @CucumberOptions(
 		features = "src/test/resources/features/homepage.feature", 		// Path to feature files
 		glue = {"utilities", "steps"}, 											// Package containing step definitions
-
+ 
 		tags = "@test",
 
 		plugin = { 
@@ -20,5 +20,9 @@ import io.cucumber.testng.CucumberOptions;
 		monochrome = true 												// Makes console output more readable
 )
 public class RunnerClass extends AbstractTestNGCucumberTests{
-	
+    static {
+        // Programmatic suppression of Cucumber output
+        System.setProperty("cucumber.publish.quiet", "true");
+        System.setProperty("cucumber.execution.dry-run", "false");
+    }
 }

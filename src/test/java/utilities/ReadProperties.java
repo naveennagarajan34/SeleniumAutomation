@@ -7,7 +7,7 @@ import java.util.Properties;
 
 public class ReadProperties {
 	Properties prop = new Properties();
-	String filePath = "config.properties";
+	String filePath = "src/test/resources/config/config.properties";
 
 	public void setProperty(String key, String value) {
 		try (FileOutputStream outputStream = new FileOutputStream(filePath)) {
@@ -23,7 +23,7 @@ public class ReadProperties {
 		Properties prop = new Properties();
 		String value;
 		try {
-			FileInputStream fileInputStream = new FileInputStream("config.properties");
+			FileInputStream fileInputStream = new FileInputStream("src/test/resources/config/config.properties");
 			prop.load(fileInputStream);
 		} catch (Exception e) {
 			e.printStackTrace();

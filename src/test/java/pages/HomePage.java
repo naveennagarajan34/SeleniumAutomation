@@ -24,14 +24,12 @@ public class HomePage {
 
 	@FindBy(xpath = "//a[text()='Privacy']")
 	private WebElement privacy;
-		
+
 	@FindBy(xpath = "//a[text()='Community Support']")
 	private WebElement communitySupport;
-	
-	@FindBy(xpath="//a[text()='Help']")
+
+	@FindBy(xpath = "//a[text()='Help']")
 	private WebElement help;
-	
-	
 
 	public HomePage(WebDriver driver) {
 		this.driver = driver;
@@ -49,79 +47,61 @@ public class HomePage {
 	}
 
 	public WebDriver verifyUserIsOnLearnMorePage() {
-		System.out.println("Title is :" + driver.getTitle());
 		assertTrue(driver.getTitle().contains("Scripture Forge"));
 		return driver;
 	}
 
 	public WebDriver Terms() {
-
 		driver.navigate().back();
 		terms.click();
 		return driver;
-
 	}
 
 	public WebDriver verifyUserIsOnTermsMorePage() {
-
-		System.out.println("Current URL is :" + driver.getCurrentUrl());
 		assertTrue(driver.getCurrentUrl().contains("terms"));
 		return driver;
 	}
 
 	public WebDriver privacy() {
-
 		driver.navigate().back();
 		privacy.click();
 		return driver;
-
 	}
-	
-	public WebDriver verifyUserIsOnPrivacyMorePage() {
 
-		System.out.println("Current URL is :" + driver.getCurrentUrl());
+	public WebDriver verifyUserIsOnPrivacyMorePage() {
 		assertTrue(driver.getCurrentUrl().contains("privacy"));
 		return driver;
 	}
-	
-	public WebDriver communitySupport() {
 
+	public WebDriver communitySupport() {
 		driver.navigate().back();
 		communitySupport.click();
 		return driver;
-
 	}
-	
+
 	public WebDriver verifyUserIscommunitySupportPage() throws InterruptedException {
-		
 		Thread.sleep(3000);
-		
 		Set<String> windows = driver.getWindowHandles();
 		Iterator<String> it = windows.iterator();
-		it.next();										// Switch to current window
+		it.next(); // Switch to current window
 		String nextwin = it.next();
 		driver.switchTo().window(nextwin);
-		System.out.println("Current URL is :" + driver.getCurrentUrl());
 		assertTrue(driver.getCurrentUrl().contains("community"));
-		//driver.close();
+		// driver.close();
 		return driver;
 	}
-	
+
 	public WebDriver clickHelpPage() throws InterruptedException {
-		
 		Thread.sleep(3000);
 		Set<String> windows = driver.getWindowHandles();
 		List<String> handlesList = new ArrayList<>(windows);
 		driver.switchTo().window(handlesList.get(0));
 		help.click();
 		return driver;
-		
 	}
-	
+
 	public WebDriver verifyHelpPage() {
-		
 		assertTrue(driver.getCurrentUrl().contains("help"));
-		
 		return driver;
 	}
 }

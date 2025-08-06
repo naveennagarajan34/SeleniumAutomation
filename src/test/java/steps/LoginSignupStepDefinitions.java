@@ -12,6 +12,7 @@ import pages.LoginSignup;
 import utilities.BrowserClass;
 import utilities.ReadProperties;
 import utilities.ReadWriteExcel;
+import utilities.TestLogger;
 import utilities.WebDriverSetup;
 
 public class LoginSignupStepDefinitions {
@@ -20,7 +21,7 @@ public class LoginSignupStepDefinitions {
 	BrowserClass browserObject;
 	HomePage homeObject;
 	ReadProperties readPropObject = new ReadProperties();
- 
+  
 	WebDriver driver;
 
 	public LoginSignupStepDefinitions() {
@@ -31,6 +32,7 @@ public class LoginSignupStepDefinitions {
 	public void navigateToScriptureforge() {
 		homeObject = new HomePage(driver);
 		driver = homeObject.navigateToHomePage(readPropObject.getProperty("baseURL"));
+		TestLogger.startTestCase("Navigated to ScriptureForge application");
 	}
 
 	@When("clicking on login button")
