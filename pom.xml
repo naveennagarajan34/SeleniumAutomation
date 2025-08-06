@@ -7,6 +7,10 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>ScriptureForgeAutomation</name>
 	<description> </description>
+	<properties>
+		<cucumber.version>7.0.0</cucumber.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
@@ -44,6 +48,7 @@
 			<scope>test</scope>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-testng -->
+		<!---->
 		<dependency>
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-testng</artifactId>
