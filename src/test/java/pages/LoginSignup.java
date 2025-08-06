@@ -13,7 +13,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import utilities.ReusableMethods;
 
 
@@ -37,6 +36,9 @@ public class LoginSignup {
 	
 	@FindBy(css="input[name='Passwd']")
 	private WebElement pwdTextBox;
+	
+	@FindBy(css="span.fadeInUp")
+	private WebElement wrongCredsMessage;
 	
 	@FindBy(id="log-out-link")
 	private WebElement logoutBtn;
@@ -91,15 +93,23 @@ public class LoginSignup {
 
 		return driver;
 	}
+	
+
+	public void login_with_invalid_credentials(String username, String password) {
+		userNameBox.sendKeys(username);
+		passwordBox.sendKeys(password);
+		authLoginButton.click();
+	}
 
 	public void logoutBtnclick() {
-		
 		logoutBtn.click();
-		
 		 reuse = new ReusableMethods(driver);
-		 
 		 reuse.explicit_wait_ele_visible(loginButton, 30);
-		
 		assertTrue(loginButton.isDisplayed());
+	}
+	
+	public void wrongEmailOrPasswordMessage() {
+		reuse = new ReusableMethods(driver);
+		reuse.explicit_wait_ele_displayed(wrongCredsMessage, 5);
 	}
 }

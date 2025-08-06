@@ -15,7 +15,7 @@ public class HeaderClassStepDefinitions {
 		this.driver = WebDriverSetup.getDriver();
 	}
  
-	private WebDriver driver;
+	private WebDriver driver; 
 
 	@Then("click on the sf logo in the header")
 	public void click_on_the_sf_logo_in_the_header() {

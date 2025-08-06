@@ -1,5 +1,6 @@
 package pages;
 
+import utilities.ReusableMethods;
 import static org.testng.Assert.assertTrue;
 
 import java.time.Duration;
@@ -25,6 +26,8 @@ public class HeaderClass {
 	private WebElement updateButton;
 	@FindBy(css = "div#user-menu-name")
 	private WebElement nameTextUI;
+	@FindBy(css = "header .mat-toolbar")
+	private WebElement header;
 
 	WebDriver driver;
 
@@ -52,7 +55,6 @@ public class HeaderClass {
 	public WebDriver clickProfile() {
 		Actions actions = new Actions(driver);
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
-		System.out.println(avatarIcon.isDisplayed());
 		actions.moveToElement(avatarIcon).click().perform();
 		return driver;
 	}
@@ -72,5 +74,10 @@ public class HeaderClass {
 		System.out.println(actualName);
 		assertTrue(actualName.equals(newname));
 		return driver;
+	}
+	
+	public void verifyHeaderIsVisible() {
+		ReusableMethods reuse = new ReusableMethods(driver);
+		reuse.explicit_wait_ele_displayed(header, 30);
 	}
 }
