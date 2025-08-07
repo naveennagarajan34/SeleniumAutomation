@@ -48,9 +48,9 @@ public class LoginSignupStepDefinitions {
 
 		ReadWriteExcel.loadExcelFile(readPropObject.getProperty("excel_data_path"), "credentials");
 
-		String username = ReadWriteExcel.getCellValue(2, 0);
-		String password = ReadWriteExcel.getCellValue(2, 1);
-		String loginType = ReadWriteExcel.getCellValue(2, 2);
+		String username = ReadWriteExcel.getCellValue(1, 0);
+		String password = ReadWriteExcel.getCellValue(1, 1);
+		String loginType = ReadWriteExcel.getCellValue(1, 2);
 		loginObject = new LoginSignup(driver);
 		if (loginType.equalsIgnoreCase("email")) {
 			driver = loginObject.loginWithCredentials(username, password);

@@ -4,7 +4,6 @@ import static org.testng.Assert.assertTrue;
 
 import java.time.Duration;
 
-import org.jspecify.annotations.Nullable;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -102,8 +101,9 @@ public class LoginSignup {
 	}
 
 	public void logoutBtnclick() {
+		reuse = new ReusableMethods(driver);
+		reuse.explicit_wait_ele_clickable(logoutBtn, 5);
 		logoutBtn.click();
-		 reuse = new ReusableMethods(driver);
 		 reuse.explicit_wait_ele_visible(loginButton, 30);
 		assertTrue(loginButton.isDisplayed());
 	}

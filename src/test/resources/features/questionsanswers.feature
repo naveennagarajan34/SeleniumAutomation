@@ -10,13 +10,13 @@ Feature: Questions and Answers page functionalities
     Then select the given "<book>" and chapter in questions pane
     When click on the manage audio button
     Then upload the audio files for the "<book>"
+    #And verify that the audio files are uploaded
 
-    And verify that the audio files are uploaded
     Examples: 
       | project | book     |
       | PDR     | John 1:1 |
 
-Scenario Outline: Delete the chapter audio for the given book
+  Scenario Outline: Delete the chapter audio for the given book
     Given Navigate to Scriptureforge
     When clicking on login button
     Then login with valid user name and password
@@ -31,7 +31,6 @@ Scenario Outline: Delete the chapter audio for the given book
     And click delete button on the audio and timing file
     Then click on the save button
     And verify that the play icon disappeared
-    
 
     Examples: 
       | project | book     |

@@ -34,7 +34,7 @@ public class WebDriverSetup {
             takeScreenshotOnFailure(scenario);
         }
 		if (driver != null) {
-			Thread.sleep(Duration.ofSeconds(10));
+			Thread.sleep(Duration.ofSeconds(2));
 //			driver.quit();
 		}
 	}

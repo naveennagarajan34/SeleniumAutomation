@@ -9,7 +9,7 @@ Feature: Login functionality for Scriptureforge
     And verify that the user is loggedin successfully
 
   @invalid @DOK_102
-  Scenario Outline: User login with valid credentials
+  Scenario Outline: User login with invalid credentials
     Given Navigate to Scriptureforge
     When clicking on login button
     Then login with invalid "<username>" and "<password>"

@@ -15,7 +15,7 @@ public class QuestionsAndAnswersStepDefinitions {
 
 	QuestionsAndAnswersPage qaObj;
 	NavigationMenu navObj;
-	WebDriver driver;
+	WebDriver driver; 
 
 	public QuestionsAndAnswersStepDefinitions() {
 		this.driver = WebDriverSetup.getDriver();
