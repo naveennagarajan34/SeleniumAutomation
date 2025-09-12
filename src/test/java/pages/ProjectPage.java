@@ -23,7 +23,7 @@ public class ProjectPage {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
-
+ 
 	private WebDriver driver;
 	
 	ReusableMethods reuseObj;

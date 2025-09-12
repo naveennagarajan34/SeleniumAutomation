@@ -35,7 +35,7 @@ public class LoginSignupStepDefinitions {
 		homeObject = new HomePage(driver);
 		driver = homeObject.navigateToHomePage(readPropObject.getProperty("baseURL"));
 		TestLogger.startTestCase("Navigated to ScriptureForge application");
-	}
+	} 
 
 	@When("clicking on login button")
 	public void clickOnLoginButton() {

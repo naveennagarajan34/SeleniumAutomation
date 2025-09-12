@@ -20,7 +20,7 @@ public class SettingsPage {
 
 //	@FindBy(xpath = "//mat-drawer[@id='menu-drawer']//a[contains(@href, '/settings')]")
 //	private WebElement settingsMenu;
-
+  
 	@FindBy(css = "#delete-btn")
 	private WebElement deleteProjectBtn;
 

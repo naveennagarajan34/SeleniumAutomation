@@ -15,7 +15,7 @@ public class EditAndReviewStepDefintions {
  
 	public EditAndReviewStepDefintions() {
 		this.driver = WebDriverSetup.getDriver();
-	}
+	} 
 
 	@Then("click on the Edit and review page")
 	public void click_on_the_edit_and_review_page() {

@@ -17,7 +17,7 @@ import utilities.ReusableMethods;
 public class UsersPage {
 	
 	WebDriver driver;
-	
+	 
 	@FindBy(css="#invitation-language .mat-mdc-text-field-wrapper")
 	private WebElement localeBox;
 	@FindBy(css = "input[type='email']")

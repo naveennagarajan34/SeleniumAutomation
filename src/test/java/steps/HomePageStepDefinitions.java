@@ -24,7 +24,7 @@ public class HomePageStepDefinitions {
 		driver = homeObject.clickLearnMore();
 		TestLogger.info("Clicked on the Learn more button");
 	}
-
+  
 	@And("verify that the user is redirected to learn more page")
 	public void verifyUserIsRedirectedToLearnMore() {
 		homeObject = new HomePage(driver);
@@ -34,7 +34,7 @@ public class HomePageStepDefinitions {
 
 	@Then("Click on the Terms button")
 	public void click_on_the_terms_button() {
-
+ 
 		homeObject = new HomePage(driver);
 		driver = homeObject.Terms();
 		TestLogger.info("Clicked on the Terms button");

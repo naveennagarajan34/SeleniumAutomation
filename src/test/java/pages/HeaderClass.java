@@ -11,7 +11,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class HeaderClass {
-
+  
 	@FindBy(css = "#sf-logo-button .mat-icon")
 	private WebElement sfLogoElement;
 	@FindBy(css = "[title=\"Language\"]")

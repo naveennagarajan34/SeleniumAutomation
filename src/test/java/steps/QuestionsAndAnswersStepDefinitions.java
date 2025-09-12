@@ -25,7 +25,7 @@ public class QuestionsAndAnswersStepDefinitions {
 	public void clickQuestionsAndAnswers() throws InterruptedException {
 		navObj = new NavigationMenu(driver);
 		navObj.clickToNavigateTo_QuestionsAnswers();
-	}
+	} 
 
 	@Then("select the given {string} and chapter in questions pane")
 	public void selectTheGivenBook(String booknChapter) {

@@ -15,7 +15,7 @@ public class SyncPage {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
-	
+	 
 	@FindBy(xpath="//span[contains(text(),'Sync')]/ancestor::button")
 	private WebElement syncBtn;
 	

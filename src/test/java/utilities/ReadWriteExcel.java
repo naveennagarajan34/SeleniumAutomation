@@ -33,7 +33,7 @@ public class ReadWriteExcel {
 		Row row = sheet.getRow(rowNum);
 		Cell cell = row.getCell(colNum);
 		return cell.getStringCellValue();
-	}
+	} 
 
 	public static int getRowCount() {
 		return sheet.getPhysicalNumberOfRows();

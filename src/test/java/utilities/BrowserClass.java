@@ -26,5 +26,5 @@ public class BrowserClass {
 		}
 		driver.manage().window().maximize();
 		return driver;
-	}
+	} 
 }

@@ -24,7 +24,7 @@ public class ManageQuestionsSteps {
 		navigate = new NavigationMenu(driver);
 		driver = navigate.clickToNavigateTo_ManageQuestions();
 	}
-
+ 
 	@And("click Add Questions button and enter the scripture reference {string},{string},{string} and verify")
 	public void clickAddQuestionsButton(String starref, String endref,String question) {
 		manage = new ManageQuestionsPage(driver);

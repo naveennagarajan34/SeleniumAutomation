@@ -11,7 +11,7 @@ import utilities.ReusableMethods;
 
 public class NavigationMenu {
 	WebDriver driver;
-
+ 
 	@FindBy(xpath = "//span[contains(text(),'Overview')]/../parent::a")
 	WebElement overviewPage;
 	@FindBy(xpath = "//span[contains(text(),'Edit')]/../parent::a")
