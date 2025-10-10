@@ -49,13 +49,13 @@ public class ManageQuestionsPage {
 	}
 
 	public WebDriver enter_scripture_reference(String start, String end, String text) {
-		int beforeCount = Integer.parseInt(questionsCount.getText());
+//		int beforeCount = Integer.parseInt(questionsCount.getText());
 		startReference.sendKeys(start);
 		endReference.sendKeys(end);
 		quesTextBox.sendKeys(text);
 		saveQuestionBtn.click();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
-		int afterCount = Integer.parseInt(questionsCount.getText());
+//		int afterCount = Integer.parseInt(questionsCount.getText());
 //		resue = new ReusableMethods(driver);
 //		resue.explicit_wait_ele_visible(questionBookExpand, 30);
 //		questionBookExpand.click();
